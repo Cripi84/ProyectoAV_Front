@@ -35,7 +35,7 @@ namespace proyectoFrontend_V3
                 }
 
                 // Cargar categorías
-                //CargarCategorias();
+                CargarCategorias();
             }
         }
 
@@ -78,36 +78,36 @@ namespace proyectoFrontend_V3
             }
         }
 
-        //private void CargarCategorias()
-        //{
-        //    try
-        //    {
-        //        var cliente = new WS_UsersSoapClient();
-        //        var respuesta = cliente.ObtenerCategorias();
+        private void CargarCategorias()
+        {
+            try
+            {
+                var cliente = new WS_UsersSoapClient();
+                var respuesta = cliente.ObtenerCategorias();
 
-        //        if (respuesta.CodigoError == 1 && respuesta.Categorias != null && respuesta.Categorias.Length > 0)
-        //        {
-        //            // Enlazar los datos al Repeater
-        //            rptCategorias.DataSource = respuesta.Categorias;
-        //            rptCategorias.DataBind();
+                if (respuesta.CodigoError == 1 && respuesta.Categorias != null && respuesta.Categorias.Length > 0)
+                {
+                    // Enlazar los datos al Repeater
+                    rptCategorias.DataSource = respuesta.Categorias;
+                    rptCategorias.DataBind();
 
-        //            lblMensaje.Visible = false;
-        //        }
-        //        else
-        //        {
-        //            // No hay categorías
-        //            rptCategorias.DataSource = null;
-        //            rptCategorias.DataBind();
+                    lblMensaje.Visible = false;
+                }
+                else
+                {
+                    // No hay categorías
+                    rptCategorias.DataSource = null;
+                    rptCategorias.DataBind();
 
-        //            lblMensaje.Text = "No hay categorías registradas";
-        //            lblMensaje.Visible = true;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        lblMensaje.Text = "Error al cargar categorías: " + ex.Message;
-        //        lblMensaje.Visible = true;
-        //    }
-        //}
+                    lblMensaje.Text = "No hay categorías registradas";
+                    lblMensaje.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                lblMensaje.Text = "Error al cargar categorías: " + ex.Message;
+                lblMensaje.Visible = true;
+            }
+        }
     }
 }

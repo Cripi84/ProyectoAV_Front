@@ -155,6 +155,9 @@
     <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.Resp_Categoria.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServicioUsuarios\WS_Users.disco" />
     <None Include="Connected Services\ServicioUsuarios\configuration91.svcinfo" />
     <None Include="Connected Services\ServicioUsuarios\configuration.svcinfo" />

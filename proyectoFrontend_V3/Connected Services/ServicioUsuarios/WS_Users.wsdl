@@ -164,6 +164,16 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ObtenerCategorias">
+        <s:complexType />
+      </s:element>
+      <s:element name="ObtenerCategoriasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerCategoriasResult" type="tns:Resp_Categoria" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="EliminarCategoria">
         <s:complexType>
           <s:sequence>
@@ -310,6 +320,12 @@
   <wsdl:message name="ActualizarCategoriaSoapOut">
     <wsdl:part name="parameters" element="tns:ActualizarCategoriaResponse" />
   </wsdl:message>
+  <wsdl:message name="ObtenerCategoriasSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerCategorias" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerCategoriasSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerCategoriasResponse" />
+  </wsdl:message>
   <wsdl:message name="EliminarCategoriaSoapIn">
     <wsdl:part name="parameters" element="tns:EliminarCategoria" />
   </wsdl:message>
@@ -374,6 +390,10 @@
     <wsdl:operation name="ActualizarCategoria">
       <wsdl:input message="tns:ActualizarCategoriaSoapIn" />
       <wsdl:output message="tns:ActualizarCategoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCategorias">
+      <wsdl:input message="tns:ObtenerCategoriasSoapIn" />
+      <wsdl:output message="tns:ObtenerCategoriasSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="EliminarCategoria">
       <wsdl:input message="tns:EliminarCategoriaSoapIn" />
@@ -458,6 +478,15 @@
     </wsdl:operation>
     <wsdl:operation name="ActualizarCategoria">
       <soap:operation soapAction="http://tempuri.org/ActualizarCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCategorias">
+      <soap:operation soapAction="http://tempuri.org/ObtenerCategorias" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -578,6 +607,15 @@
     </wsdl:operation>
     <wsdl:operation name="ActualizarCategoria">
       <soap12:operation soapAction="http://tempuri.org/ActualizarCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCategorias">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerCategorias" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

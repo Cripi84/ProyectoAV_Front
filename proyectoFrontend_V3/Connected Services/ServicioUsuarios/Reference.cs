@@ -923,6 +923,13 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarCategoria", ReplyAction="*")]
         System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ActualizarCategoriaResponse> ActualizarCategoriaAsync(proyectoFrontend_V3.ServicioUsuarios.ActualizarCategoriaRequest request);
         
+        // CODEGEN: Generating message contract since element name ObtenerCategoriasResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerCategorias", ReplyAction="*")]
+        proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasResponse ObtenerCategorias(proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerCategorias", ReplyAction="*")]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasResponse> ObtenerCategoriasAsync(proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasRequest request);
+        
         // CODEGEN: Generating message contract since element name EliminarCategoriaResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EliminarCategoria", ReplyAction="*")]
         proyectoFrontend_V3.ServicioUsuarios.EliminarCategoriaResponse EliminarCategoria(proyectoFrontend_V3.ServicioUsuarios.EliminarCategoriaRequest request);
@@ -1436,6 +1443,67 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
         
         public ActualizarCategoriaResponseBody(proyectoFrontend_V3.ServicioUsuarios.Resp_Simple ActualizarCategoriaResult) {
             this.ActualizarCategoriaResult = ActualizarCategoriaResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ObtenerCategoriasRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ObtenerCategorias", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasRequestBody Body;
+        
+        public ObtenerCategoriasRequest() {
+        }
+        
+        public ObtenerCategoriasRequest(proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class ObtenerCategoriasRequestBody {
+        
+        public ObtenerCategoriasRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ObtenerCategoriasResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ObtenerCategoriasResponse", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasResponseBody Body;
+        
+        public ObtenerCategoriasResponse() {
+        }
+        
+        public ObtenerCategoriasResponse(proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ObtenerCategoriasResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.Resp_Categoria ObtenerCategoriasResult;
+        
+        public ObtenerCategoriasResponseBody() {
+        }
+        
+        public ObtenerCategoriasResponseBody(proyectoFrontend_V3.ServicioUsuarios.Resp_Categoria ObtenerCategoriasResult) {
+            this.ObtenerCategoriasResult = ObtenerCategoriasResult;
         }
     }
     
@@ -2040,6 +2108,29 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
             inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.ActualizarCategoriaRequestBody();
             inValue.Body.categoria = categoria;
             return ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).ActualizarCategoriaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasResponse proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.ObtenerCategorias(proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasRequest request) {
+            return base.Channel.ObtenerCategorias(request);
+        }
+        
+        public proyectoFrontend_V3.ServicioUsuarios.Resp_Categoria ObtenerCategorias() {
+            proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasRequestBody();
+            proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasResponse retVal = ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).ObtenerCategorias(inValue);
+            return retVal.Body.ObtenerCategoriasResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasResponse> proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.ObtenerCategoriasAsync(proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasRequest request) {
+            return base.Channel.ObtenerCategoriasAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasResponse> ObtenerCategoriasAsync() {
+            proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasRequestBody();
+            return ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).ObtenerCategoriasAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
