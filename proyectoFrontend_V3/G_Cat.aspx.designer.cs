@@ -11,7 +11,7 @@ namespace proyectoFrontend_V3
 {
 
 
-    public partial class G_Aut
+    public partial class G_Cat
     {
 
         /// <summary>
@@ -24,13 +24,31 @@ namespace proyectoFrontend_V3
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// rptAutores control.
+        /// lblUsuarioNombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptAutores;
+        protected global::System.Web.UI.WebControls.Label lblUsuarioNombre;
+
+        /// <summary>
+        /// lblUsuarioEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUsuarioEmail;
+
+        /// <summary>
+        /// rptCategorias control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptCategorias;
 
         /// <summary>
         /// lblMensaje control.

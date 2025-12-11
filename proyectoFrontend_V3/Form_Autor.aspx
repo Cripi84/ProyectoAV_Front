@@ -12,8 +12,11 @@
     <form id="formAutor" runat="server">
         <div class="login-container">
             <div class="login-box">
-                <h1 class="login-title">Gestión de Autor</h1>
+                <h1 class="login-title" id="titulo">Gestión de Autor</h1>
                 <div class="login-form">
+                    <!-- Campo oculto para ID (0 = nuevo, >0 = editar) -->
+                    <input type="hidden" id="idAutor" name="idAutor" value="0" />
+                    
                     <label for="nombreAutor" class="login-label">Nombre</label>
                     <input type="text" id="nombreAutor" name="nombreAutor" class="login-input" 
                            placeholder="Nombre del autor" required />
@@ -40,5 +43,22 @@
             </div>
         </div>
     </form>
+    
+    <script>
+        // Cambiar el título y texto del botón según el modo
+        window.addEventListener('DOMContentLoaded', function() {
+            const idAutor = document.getElementById('idAutor').value;
+            const titulo = document.getElementById('titulo');
+            const boton = document.getElementById('<%= btnGuardarAutor.ClientID %>');
+            
+            if (idAutor && idAutor !== '0') {
+                titulo.textContent = 'Editar Autor';
+                boton.value = 'Actualizar Autor';
+            } else {
+                titulo.textContent = 'Nuevo Autor';
+                boton.value = 'Guardar Autor';
+            }
+        });
+    </script>
 </body>
 </html>

@@ -128,6 +128,33 @@
     <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.Resp_Users.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.ActualizarAutorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.ActualizarCategoriaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.EliminarAutorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.EliminarCategoriaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.ObtenerAutoresResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.ObtenerAutorPorIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriaPorIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.Resp_Autor.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.Resp_Categoria.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServicioUsuarios\WS_Users.disco" />
     <None Include="Connected Services\ServicioUsuarios\configuration91.svcinfo" />
     <None Include="Connected Services\ServicioUsuarios\configuration.svcinfo" />
@@ -159,6 +186,7 @@
     <Content Include="Form_Doc.aspx" />
     <Content Include="Global.asax" />
     <Content Include="G_Aut.aspx" />
+    <Content Include="G_Cat.aspx" />
     <Content Include="G_Doc.aspx" />
     <Content Include="G_User.aspx" />
     <Content Include="Home_Management.aspx" />
@@ -268,6 +296,13 @@
     </Compile>
     <Compile Include="G_Aut.aspx.designer.cs">
       <DependentUpon>G_Aut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="G_Cat.aspx.cs">
+      <DependentUpon>G_Cat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="G_Cat.aspx.designer.cs">
+      <DependentUpon>G_Cat.aspx</DependentUpon>
     </Compile>
     <Compile Include="G_Doc.aspx.cs">
       <DependentUpon>G_Doc.aspx</DependentUpon>

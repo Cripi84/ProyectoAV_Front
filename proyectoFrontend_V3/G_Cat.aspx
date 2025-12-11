@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="G_Aut.aspx.cs" Inherits="proyectoFrontend_V3.G_Aut" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="G_Cat.aspx.cs" Inherits="proyectoFrontend_V3.G_Cat" %>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestionar Autores</title>
+    <title>Gestionar Categorías</title>
     <link rel="stylesheet" href="\Estilos\Styles.css">
 </head>
 <body>
@@ -15,38 +15,44 @@
                 <button type="button" class="btn-menu" onclick="toggleDropdown()">☰</button>
                 <div class="dropdown-menu" id="dropdownMenu">
                     <div class="dropdown-header">
-                        <p class="profile-name">Nombre Usuario</p>
-                        <p class="profile-email">correo@ejemplo.com</p>
+                        <p class="profile-name">
+                            <asp:Label ID="lblUsuarioNombre" runat="server"></asp:Label>
+                        </p>
+                        <p class="profile-email">
+                            <asp:Label ID="lblUsuarioEmail" runat="server"></asp:Label>
+                        </p>
                     </div>
                     <button type="button" class="dropdown-item" onclick="window.location.href='Perfil.aspx'">
                         Mi Perfil
                     </button>
-                    <button type="button" class="dropdown-item dropdown-logout" onclick="window.location.href='LogIn.aspx'">
+                    <button type="button" class="dropdown-item dropdown-logout" onclick="window.location.href='CerrarSesion.aspx'">
                         Cerrar Sesión
                     </button>
                 </div>
             </div>
-            <h1 class="topbar-title">Autores</h1>
+            <h1 class="topbar-title">Categorías</h1>
         </div>
         
         <div class="main-content">
-            <table class="table-authors">
+            <table class="table-categories">
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Nacionalidad</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <asp:Repeater ID="rptAutores" runat="server">
+                    <asp:Repeater ID="rptCategorias" runat="server">
                         <ItemTemplate>
                             <tr>
-                                <td><%# Eval("NombreAutor") %> <%# Eval("ApellidoAutor") %></td>
-                                <td><%# Eval("Nacionalidad") %></td>
+                                <td><%# Eval("NombreCategoria") %></td>
                                 <td>
-                                    <button type="button" class="btn-edit" onclick="editarAutor(<%# Eval("ID_Autor") %>)">Editar</button>
-                                    <button type="button" class="btn-delete" onclick="eliminarAutor(<%# Eval("ID_Autor") %>, '<%# Eval("NombreAutor") %> <%# Eval("ApellidoAutor") %>')">Eliminar</button>
+                                    <button type="button" class="btn-edit" onclick="editarCategoria(<%# Eval("ID_Categoria") %>)">
+                                        Editar
+                                    </button>
+                                    <button type="button" class="btn-delete" onclick="eliminarCategoria(<%# Eval("ID_Categoria") %>, '<%# Eval("NombreCategoria") %>')">
+                                        Eliminar
+                                    </button>
                                 </td>
                             </tr>
                         </ItemTemplate>
@@ -57,7 +63,7 @@
             </table>
         </div>
         
-        <button type="button" class="fab-add" onclick="window.location.href='Form_Autor.aspx'">+</button>
+        <button type="button" class="fab-add" onclick="window.location.href='Form_Cat.aspx'">+</button>
     </form>
     
     <script>
@@ -77,13 +83,13 @@
             }
         }
 
-        function editarAutor(id) {
-            window.location.href = 'Form_Autor.aspx?id=' + id;
+        function editarCategoria(id) {
+            window.location.href = 'Form_Cat.aspx?id=' + id;
         }
 
-        function eliminarAutor(id, nombre) {
-            if (confirm('¿Está seguro de eliminar al autor: ' + nombre + '?')) {
-                window.location.href = 'G_Aut.aspx?action=delete&id=' + id;
+        function eliminarCategoria(id, nombre) {
+            if (confirm('¿Está seguro que desea eliminar la categoría "' + nombre + '"?\n\nEsta acción NO se puede deshacer.\nSi hay documentos asociados, no se podrá eliminar.')) {
+                window.location.href = 'G_Cat.aspx?accion=eliminar&id=' + id;
             }
         }
     </script>

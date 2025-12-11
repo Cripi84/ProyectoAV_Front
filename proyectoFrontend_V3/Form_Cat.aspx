@@ -14,12 +14,14 @@
             <div class="login-box">
                 <h1 class="login-title">Gestión de Categoría</h1>
                 <div class="login-form">
+                    <input type="hidden" id="idCategoria" name="idCategoria" value="0" />
+                    
                     <label for="nombreCategoria" class="login-label">Nombre de la categoría</label>
                     <input type="text" id="nombreCategoria" name="nombreCategoria" class="login-input"
                            placeholder="Ej. Ciencia ficción" required />
                     
                     <asp:Button ID="btnGuardarCategoria" runat="server"
-                        CssClass="btn-login" Text="Guardar Categoría"
+                        CssClass="btn-login" Text="Guardar Categoría" 
                         OnClick="btnGuardarCategoria_Click" />
                 </div>
                 <p class="register-link"><a href="G_Cat.aspx">Volver a categorías</a></p>
