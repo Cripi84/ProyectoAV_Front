@@ -1,0 +1,498 @@
+﻿/* ================================
+   ESTILOS GENERALES
+================================ */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    transition: 0.2s;
+}
+
+/* ================================
+   LOGIN
+================================ */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+    background: white;
+    padding: 40px;
+    width: 350px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.login-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-label {
+    margin-top: 10px;
+}
+
+.login-input {
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+}
+
+.btn-login {
+    margin-top: 20px;
+    padding: 12px;
+    background: #1e3a8a;
+    color: white;
+    border-radius: 5px;
+}
+
+    .btn-login:hover {
+        background: #3b82f6;
+    }
+
+.login-temp-buttons {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.temp-title {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.btn-temp-user, .btn-temp-admin {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background: #e5e7eb;
+}
+
+    .btn-temp-user:hover, .btn-temp-admin:hover {
+        background: #d1d5db;
+    }
+
+/* Estilos para checkbox y link de registro */
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.login-checkbox {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.checkbox-label {
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
+    .register-link a {
+        color: #1e3a8a;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+/* ================================
+   TOP BAR
+================================ */
+
+.topbar {
+    background: #1e3a8a;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.menu-container {
+    position: relative;
+    display: inline-block;
+}
+
+.btn-menu {
+    background: none;
+    color: white;
+    font-size: 24px;
+    margin-right: 20px;
+    padding: 8px 12px;
+    transition: 0.2s;
+}
+
+    .btn-menu:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+    }
+
+.topbar-title {
+    font-size: 20px;
+}
+
+/* ================================
+   DROPDOWN MENU
+================================ */
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: white;
+    min-width: 250px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+    .dropdown-menu.show {
+        display: block;
+        animation: fadeIn 0.2s ease-in;
+    }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-header {
+    background: #1e3a8a;
+    color: white;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+    .dropdown-header .profile-name {
+        font-weight: bold;
+        margin: 0 0 5px 0;
+        font-size: 16px;
+    }
+
+    .dropdown-header .profile-email {
+        color: #bdc3c7;
+        margin: 0;
+        font-size: 13px;
+    }
+
+.dropdown-item {
+    width: 100%;
+    padding: 12px 15px;
+    background: white;
+    color: #1f2937;
+    border: none;
+    text-align: left;
+    font-size: 15px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+    .dropdown-item:hover {
+        background: #f3f4f6;
+    }
+
+.dropdown-logout {
+    color: #ef4444;
+    font-weight: 500;
+    border-top: 1px solid #e5e7eb;
+}
+
+    .dropdown-logout:hover {
+        background: #fee2e2;
+    }
+
+/* ================================
+   MAIN CONTENT
+================================ */
+
+.main-content {
+    padding: 20px;
+    margin-left: 0;
+}
+
+.section-title {
+    margin-bottom: 15px;
+}
+
+/* ================================
+   HOME — DOCUMENTOS
+================================ */
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-input, .search-category {
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+}
+
+.btn-search {
+    padding: 10px 15px;
+    background: #1e3a8a;
+    color: white;
+    border-radius: 5px;
+}
+
+    .btn-search:hover {
+        background: #3b82f6;
+    }
+
+.document-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 15px;
+}
+
+.document-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.document-title {
+    margin-bottom: 8px;
+}
+
+.document-category {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.btn-view {
+    margin-top: 10px;
+    background: #3b82f6;
+    padding: 10px;
+    color: white;
+    width: 100%;
+    border-radius: 5px;
+}
+
+    .btn-view:hover {
+        background: #60a5fa;
+    }
+
+/* ================================
+   DETALLE DOCUMENTO
+================================ */
+
+.detail-box {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.btn-download {
+    background: #1e3a8a;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+    .btn-download:hover {
+        background: #3b82f6;
+    }
+
+/* ================================
+   ADMIN CARDS
+================================ */
+
+.admin-options {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.admin-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+    .admin-card:hover {
+        background: #e0e7ff;
+    }
+
+/* ================================
+   TABLAS GENERALES
+================================ */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background: #1e3a8a;
+    color: white;
+}
+
+th, td {
+    padding: 12px;
+}
+
+tr:nth-child(even) {
+    background: #f3f4f6;
+}
+
+.btn-edit {
+    background: #3b82f6;
+    padding: 6px 12px;
+    color: white;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+    .btn-edit:hover {
+        background: #60a5fa;
+    }
+
+.btn-delete {
+    background: #ef4444;
+    padding: 6px 12px;
+    color: white;
+    border-radius: 5px;
+}
+
+    .btn-delete:hover {
+        background: #dc2626;
+    }
+
+/* ================================
+   FORMULARIOS DE ADMINISTRACIÓN
+================================ */
+
+.upload-form,
+.category-form,
+.author-form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    max-width: 600px;
+}
+
+.upload-input,
+.category-input,
+.author-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #d1d5db;
+}
+
+.btn-upload,
+.btn-add {
+    margin-top: 15px;
+    padding: 10px;
+    background: #1e3a8a;
+    color: white;
+    border-radius: 5px;
+    width: 100%;
+}
+
+    .btn-upload:hover,
+    .btn-add:hover {
+        background: #3b82f6;
+    }
+
+/* Floating Action Button (FAB) */
+.fab-add {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 58px;
+    height: 58px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 50%;
+    font-size: 32px;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: 0.2s;
+    z-index: 8;
+}
+
+    .fab-add:hover {
+        background: #60a5fa;
+        transform: scale(1.08);
+    }
+
+.remember-container {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    gap: 8px;
+}
+
+    .remember-container input[type="checkbox"] {
+        width: auto;
+        margin: 0;
+    }
+
+    .remember-container label {
+        margin: 0;
+        font-size: 14px;
+        cursor: pointer;
+    }

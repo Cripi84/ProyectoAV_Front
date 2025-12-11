@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="RegistrarPublico">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:UserPublic" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserPublic">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NombreUsuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoUsuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Alias" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Clave" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegistrarPublicoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrarPublicoResult" type="tns:Resp_Simple" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Resp_Simple">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoError" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IniciarSesion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IniciarSesionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IniciarSesionResult" type="tns:Resp_Login" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Resp_Login">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoError" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Usuario" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreUsuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoUsuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Alias" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Rol" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rol" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Estado" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaRegistro" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Clave" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegistrarAdmin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarAdminResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrarAdminResult" type="tns:Resp_Simple" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerUsuarios">
+        <s:complexType />
+      </s:element>
+      <s:element name="ObtenerUsuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerUsuariosResult" type="tns:Resp_Users" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Resp_Users">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoError" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuarios" type="tns:ArrayOfUser" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CrearCategoria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="categoria" type="tns:Categoria" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Categoria">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Categoria" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreCategoria" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CrearCategoriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CrearCategoriaResult" type="tns:Resp_Simple" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearAutor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="autor" type="tns:Autor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Autor">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Autor" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreAutor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoAutor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nacionalidad" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaNacimiento" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaDefuncion" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CrearAutorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CrearAutorResult" type="tns:Resp_Simple" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RegistrarPublicoSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarPublico" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarPublicoSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarPublicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IniciarSesionSoapIn">
+    <wsdl:part name="parameters" element="tns:IniciarSesion" />
+  </wsdl:message>
+  <wsdl:message name="IniciarSesionSoapOut">
+    <wsdl:part name="parameters" element="tns:IniciarSesionResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarAdminSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarAdmin" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarAdminSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerUsuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerUsuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="CrearCategoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:CrearCategoria" />
+  </wsdl:message>
+  <wsdl:message name="CrearCategoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:CrearCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="CrearAutorSoapIn">
+    <wsdl:part name="parameters" element="tns:CrearAutor" />
+  </wsdl:message>
+  <wsdl:message name="CrearAutorSoapOut">
+    <wsdl:part name="parameters" element="tns:CrearAutorResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WS_UsersSoap">
+    <wsdl:operation name="RegistrarPublico">
+      <wsdl:input message="tns:RegistrarPublicoSoapIn" />
+      <wsdl:output message="tns:RegistrarPublicoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IniciarSesion">
+      <wsdl:input message="tns:IniciarSesionSoapIn" />
+      <wsdl:output message="tns:IniciarSesionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarAdmin">
+      <wsdl:input message="tns:RegistrarAdminSoapIn" />
+      <wsdl:output message="tns:RegistrarAdminSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUsuarios">
+      <wsdl:input message="tns:ObtenerUsuariosSoapIn" />
+      <wsdl:output message="tns:ObtenerUsuariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearCategoria">
+      <wsdl:input message="tns:CrearCategoriaSoapIn" />
+      <wsdl:output message="tns:CrearCategoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearAutor">
+      <wsdl:input message="tns:CrearAutorSoapIn" />
+      <wsdl:output message="tns:CrearAutorSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WS_UsersSoap" type="tns:WS_UsersSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegistrarPublico">
+      <soap:operation soapAction="http://tempuri.org/RegistrarPublico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IniciarSesion">
+      <soap:operation soapAction="http://tempuri.org/IniciarSesion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarAdmin">
+      <soap:operation soapAction="http://tempuri.org/RegistrarAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUsuarios">
+      <soap:operation soapAction="http://tempuri.org/ObtenerUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearCategoria">
+      <soap:operation soapAction="http://tempuri.org/CrearCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearAutor">
+      <soap:operation soapAction="http://tempuri.org/CrearAutor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WS_UsersSoap12" type="tns:WS_UsersSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegistrarPublico">
+      <soap12:operation soapAction="http://tempuri.org/RegistrarPublico" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IniciarSesion">
+      <soap12:operation soapAction="http://tempuri.org/IniciarSesion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarAdmin">
+      <soap12:operation soapAction="http://tempuri.org/RegistrarAdmin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUsuarios">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearCategoria">
+      <soap12:operation soapAction="http://tempuri.org/CrearCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearAutor">
+      <soap12:operation soapAction="http://tempuri.org/CrearAutor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WS_Users">
+    <wsdl:port name="WS_UsersSoap" binding="tns:WS_UsersSoap">
+      <soap:address location="https://localhost:44360/WS_Users.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WS_UsersSoap12" binding="tns:WS_UsersSoap12">
+      <soap12:address location="https://localhost:44360/WS_Users.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
