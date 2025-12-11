@@ -870,6 +870,190 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Documento", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Documento : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int ID_DocumentoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TituloField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FotoField;
+        
+        private int ID_CategoriaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreCategoriaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RutaFisicaField;
+        
+        private System.Nullable<System.DateTime> FechaPublicacionField;
+        
+        private int ID_UsuarioSubidaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreUsuarioField;
+        
+        private System.DateTime FechaSubidaField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ID_Documento {
+            get {
+                return this.ID_DocumentoField;
+            }
+            set {
+                if ((this.ID_DocumentoField.Equals(value) != true)) {
+                    this.ID_DocumentoField = value;
+                    this.RaisePropertyChanged("ID_Documento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Titulo {
+            get {
+                return this.TituloField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TituloField, value) != true)) {
+                    this.TituloField = value;
+                    this.RaisePropertyChanged("Titulo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Foto {
+            get {
+                return this.FotoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FotoField, value) != true)) {
+                    this.FotoField = value;
+                    this.RaisePropertyChanged("Foto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public int ID_Categoria {
+            get {
+                return this.ID_CategoriaField;
+            }
+            set {
+                if ((this.ID_CategoriaField.Equals(value) != true)) {
+                    this.ID_CategoriaField = value;
+                    this.RaisePropertyChanged("ID_Categoria");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string NombreCategoria {
+            get {
+                return this.NombreCategoriaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreCategoriaField, value) != true)) {
+                    this.NombreCategoriaField = value;
+                    this.RaisePropertyChanged("NombreCategoria");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string RutaFisica {
+            get {
+                return this.RutaFisicaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RutaFisicaField, value) != true)) {
+                    this.RutaFisicaField = value;
+                    this.RaisePropertyChanged("RutaFisica");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public System.Nullable<System.DateTime> FechaPublicacion {
+            get {
+                return this.FechaPublicacionField;
+            }
+            set {
+                if ((this.FechaPublicacionField.Equals(value) != true)) {
+                    this.FechaPublicacionField = value;
+                    this.RaisePropertyChanged("FechaPublicacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        public int ID_UsuarioSubida {
+            get {
+                return this.ID_UsuarioSubidaField;
+            }
+            set {
+                if ((this.ID_UsuarioSubidaField.Equals(value) != true)) {
+                    this.ID_UsuarioSubidaField = value;
+                    this.RaisePropertyChanged("ID_UsuarioSubida");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
+        public string NombreUsuario {
+            get {
+                return this.NombreUsuarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreUsuarioField, value) != true)) {
+                    this.NombreUsuarioField = value;
+                    this.RaisePropertyChanged("NombreUsuario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
+        public System.DateTime FechaSubida {
+            get {
+                return this.FechaSubidaField;
+            }
+            set {
+                if ((this.FechaSubidaField.Equals(value) != true)) {
+                    this.FechaSubidaField = value;
+                    this.RaisePropertyChanged("FechaSubida");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServicioUsuarios.WS_UsersSoap")]
     public interface WS_UsersSoap {
@@ -971,6 +1155,54 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EliminarAutor", ReplyAction="*")]
         System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.EliminarAutorResponse> EliminarAutorAsync(proyectoFrontend_V3.ServicioUsuarios.EliminarAutorRequest request);
+        
+        // CODEGEN: Generating message contract since element name ListarDocumentosResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarDocumentos", ReplyAction="*")]
+        proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosResponse ListarDocumentos(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarDocumentos", ReplyAction="*")]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosResponse> ListarDocumentosAsync(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosRequest request);
+        
+        // CODEGEN: Generating message contract since element name ObtenerDocumentoResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerDocumento", ReplyAction="*")]
+        proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoResponse ObtenerDocumento(proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerDocumento", ReplyAction="*")]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoResponse> ObtenerDocumentoAsync(proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoRequest request);
+        
+        // CODEGEN: Generating message contract since element name doc from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CrearDocumento", ReplyAction="*")]
+        proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoResponse CrearDocumento(proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CrearDocumento", ReplyAction="*")]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoResponse> CrearDocumentoAsync(proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoRequest request);
+        
+        // CODEGEN: Generating message contract since element name doc from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarDocumento", ReplyAction="*")]
+        proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoResponse ActualizarDocumento(proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarDocumento", ReplyAction="*")]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoResponse> ActualizarDocumentoAsync(proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EliminarDocumento", ReplyAction="*")]
+        bool EliminarDocumento(int idDocumento);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EliminarDocumento", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> EliminarDocumentoAsync(int idDocumento);
+        
+        // CODEGEN: Generating message contract since element name ListarDocumentosPorCategoriaResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarDocumentosPorCategoria", ReplyAction="*")]
+        proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaResponse ListarDocumentosPorCategoria(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarDocumentosPorCategoria", ReplyAction="*")]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaResponse> ListarDocumentosPorCategoriaAsync(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaRequest request);
+        
+        // CODEGEN: Generating message contract since element name ListarDocumentosPorAutorResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarDocumentosPorAutor", ReplyAction="*")]
+        proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorResponse ListarDocumentosPorAutor(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarDocumentosPorAutor", ReplyAction="*")]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorResponse> ListarDocumentosPorAutorAsync(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1908,6 +2140,407 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ListarDocumentosRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarDocumentos", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosRequestBody Body;
+        
+        public ListarDocumentosRequest() {
+        }
+        
+        public ListarDocumentosRequest(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class ListarDocumentosRequestBody {
+        
+        public ListarDocumentosRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ListarDocumentosResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarDocumentosResponse", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosResponseBody Body;
+        
+        public ListarDocumentosResponse() {
+        }
+        
+        public ListarDocumentosResponse(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ListarDocumentosResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.Documento[] ListarDocumentosResult;
+        
+        public ListarDocumentosResponseBody() {
+        }
+        
+        public ListarDocumentosResponseBody(proyectoFrontend_V3.ServicioUsuarios.Documento[] ListarDocumentosResult) {
+            this.ListarDocumentosResult = ListarDocumentosResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ObtenerDocumentoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ObtenerDocumento", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoRequestBody Body;
+        
+        public ObtenerDocumentoRequest() {
+        }
+        
+        public ObtenerDocumentoRequest(proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ObtenerDocumentoRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int idDocumento;
+        
+        public ObtenerDocumentoRequestBody() {
+        }
+        
+        public ObtenerDocumentoRequestBody(int idDocumento) {
+            this.idDocumento = idDocumento;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ObtenerDocumentoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ObtenerDocumentoResponse", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoResponseBody Body;
+        
+        public ObtenerDocumentoResponse() {
+        }
+        
+        public ObtenerDocumentoResponse(proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ObtenerDocumentoResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.Documento ObtenerDocumentoResult;
+        
+        public ObtenerDocumentoResponseBody() {
+        }
+        
+        public ObtenerDocumentoResponseBody(proyectoFrontend_V3.ServicioUsuarios.Documento ObtenerDocumentoResult) {
+            this.ObtenerDocumentoResult = ObtenerDocumentoResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CrearDocumentoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CrearDocumento", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoRequestBody Body;
+        
+        public CrearDocumentoRequest() {
+        }
+        
+        public CrearDocumentoRequest(proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CrearDocumentoRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.Documento doc;
+        
+        public CrearDocumentoRequestBody() {
+        }
+        
+        public CrearDocumentoRequestBody(proyectoFrontend_V3.ServicioUsuarios.Documento doc) {
+            this.doc = doc;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CrearDocumentoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CrearDocumentoResponse", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoResponseBody Body;
+        
+        public CrearDocumentoResponse() {
+        }
+        
+        public CrearDocumentoResponse(proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CrearDocumentoResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.Documento CrearDocumentoResult;
+        
+        public CrearDocumentoResponseBody() {
+        }
+        
+        public CrearDocumentoResponseBody(proyectoFrontend_V3.ServicioUsuarios.Documento CrearDocumentoResult) {
+            this.CrearDocumentoResult = CrearDocumentoResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ActualizarDocumentoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ActualizarDocumento", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoRequestBody Body;
+        
+        public ActualizarDocumentoRequest() {
+        }
+        
+        public ActualizarDocumentoRequest(proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ActualizarDocumentoRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.Documento doc;
+        
+        public ActualizarDocumentoRequestBody() {
+        }
+        
+        public ActualizarDocumentoRequestBody(proyectoFrontend_V3.ServicioUsuarios.Documento doc) {
+            this.doc = doc;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ActualizarDocumentoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ActualizarDocumentoResponse", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoResponseBody Body;
+        
+        public ActualizarDocumentoResponse() {
+        }
+        
+        public ActualizarDocumentoResponse(proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ActualizarDocumentoResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool ActualizarDocumentoResult;
+        
+        public ActualizarDocumentoResponseBody() {
+        }
+        
+        public ActualizarDocumentoResponseBody(bool ActualizarDocumentoResult) {
+            this.ActualizarDocumentoResult = ActualizarDocumentoResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ListarDocumentosPorCategoriaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarDocumentosPorCategoria", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaRequestBody Body;
+        
+        public ListarDocumentosPorCategoriaRequest() {
+        }
+        
+        public ListarDocumentosPorCategoriaRequest(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ListarDocumentosPorCategoriaRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int idCategoria;
+        
+        public ListarDocumentosPorCategoriaRequestBody() {
+        }
+        
+        public ListarDocumentosPorCategoriaRequestBody(int idCategoria) {
+            this.idCategoria = idCategoria;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ListarDocumentosPorCategoriaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarDocumentosPorCategoriaResponse", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaResponseBody Body;
+        
+        public ListarDocumentosPorCategoriaResponse() {
+        }
+        
+        public ListarDocumentosPorCategoriaResponse(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ListarDocumentosPorCategoriaResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.Documento[] ListarDocumentosPorCategoriaResult;
+        
+        public ListarDocumentosPorCategoriaResponseBody() {
+        }
+        
+        public ListarDocumentosPorCategoriaResponseBody(proyectoFrontend_V3.ServicioUsuarios.Documento[] ListarDocumentosPorCategoriaResult) {
+            this.ListarDocumentosPorCategoriaResult = ListarDocumentosPorCategoriaResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ListarDocumentosPorAutorRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarDocumentosPorAutor", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorRequestBody Body;
+        
+        public ListarDocumentosPorAutorRequest() {
+        }
+        
+        public ListarDocumentosPorAutorRequest(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ListarDocumentosPorAutorRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int idAutor;
+        
+        public ListarDocumentosPorAutorRequestBody() {
+        }
+        
+        public ListarDocumentosPorAutorRequestBody(int idAutor) {
+            this.idAutor = idAutor;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ListarDocumentosPorAutorResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarDocumentosPorAutorResponse", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorResponseBody Body;
+        
+        public ListarDocumentosPorAutorResponse() {
+        }
+        
+        public ListarDocumentosPorAutorResponse(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ListarDocumentosPorAutorResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.Documento[] ListarDocumentosPorAutorResult;
+        
+        public ListarDocumentosPorAutorResponseBody() {
+        }
+        
+        public ListarDocumentosPorAutorResponseBody(proyectoFrontend_V3.ServicioUsuarios.Documento[] ListarDocumentosPorAutorResult) {
+            this.ListarDocumentosPorAutorResult = ListarDocumentosPorAutorResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface WS_UsersSoapChannel : proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap, System.ServiceModel.IClientChannel {
     }
@@ -2279,6 +2912,162 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
             inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.EliminarAutorRequestBody();
             inValue.Body.idAutor = idAutor;
             return ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).EliminarAutorAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosResponse proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.ListarDocumentos(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosRequest request) {
+            return base.Channel.ListarDocumentos(request);
+        }
+        
+        public proyectoFrontend_V3.ServicioUsuarios.Documento[] ListarDocumentos() {
+            proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosRequestBody();
+            proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosResponse retVal = ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).ListarDocumentos(inValue);
+            return retVal.Body.ListarDocumentosResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosResponse> proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.ListarDocumentosAsync(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosRequest request) {
+            return base.Channel.ListarDocumentosAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosResponse> ListarDocumentosAsync() {
+            proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosRequestBody();
+            return ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).ListarDocumentosAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoResponse proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.ObtenerDocumento(proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoRequest request) {
+            return base.Channel.ObtenerDocumento(request);
+        }
+        
+        public proyectoFrontend_V3.ServicioUsuarios.Documento ObtenerDocumento(int idDocumento) {
+            proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoRequestBody();
+            inValue.Body.idDocumento = idDocumento;
+            proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoResponse retVal = ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).ObtenerDocumento(inValue);
+            return retVal.Body.ObtenerDocumentoResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoResponse> proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.ObtenerDocumentoAsync(proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoRequest request) {
+            return base.Channel.ObtenerDocumentoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoResponse> ObtenerDocumentoAsync(int idDocumento) {
+            proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoRequestBody();
+            inValue.Body.idDocumento = idDocumento;
+            return ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).ObtenerDocumentoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoResponse proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.CrearDocumento(proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoRequest request) {
+            return base.Channel.CrearDocumento(request);
+        }
+        
+        public proyectoFrontend_V3.ServicioUsuarios.Documento CrearDocumento(proyectoFrontend_V3.ServicioUsuarios.Documento doc) {
+            proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoRequestBody();
+            inValue.Body.doc = doc;
+            proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoResponse retVal = ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).CrearDocumento(inValue);
+            return retVal.Body.CrearDocumentoResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoResponse> proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.CrearDocumentoAsync(proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoRequest request) {
+            return base.Channel.CrearDocumentoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoResponse> CrearDocumentoAsync(proyectoFrontend_V3.ServicioUsuarios.Documento doc) {
+            proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoRequestBody();
+            inValue.Body.doc = doc;
+            return ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).CrearDocumentoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoResponse proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.ActualizarDocumento(proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoRequest request) {
+            return base.Channel.ActualizarDocumento(request);
+        }
+        
+        public bool ActualizarDocumento(proyectoFrontend_V3.ServicioUsuarios.Documento doc) {
+            proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoRequestBody();
+            inValue.Body.doc = doc;
+            proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoResponse retVal = ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).ActualizarDocumento(inValue);
+            return retVal.Body.ActualizarDocumentoResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoResponse> proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.ActualizarDocumentoAsync(proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoRequest request) {
+            return base.Channel.ActualizarDocumentoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoResponse> ActualizarDocumentoAsync(proyectoFrontend_V3.ServicioUsuarios.Documento doc) {
+            proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoRequestBody();
+            inValue.Body.doc = doc;
+            return ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).ActualizarDocumentoAsync(inValue);
+        }
+        
+        public bool EliminarDocumento(int idDocumento) {
+            return base.Channel.EliminarDocumento(idDocumento);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarDocumentoAsync(int idDocumento) {
+            return base.Channel.EliminarDocumentoAsync(idDocumento);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaResponse proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.ListarDocumentosPorCategoria(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaRequest request) {
+            return base.Channel.ListarDocumentosPorCategoria(request);
+        }
+        
+        public proyectoFrontend_V3.ServicioUsuarios.Documento[] ListarDocumentosPorCategoria(int idCategoria) {
+            proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaRequestBody();
+            inValue.Body.idCategoria = idCategoria;
+            proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaResponse retVal = ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).ListarDocumentosPorCategoria(inValue);
+            return retVal.Body.ListarDocumentosPorCategoriaResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaResponse> proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.ListarDocumentosPorCategoriaAsync(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaRequest request) {
+            return base.Channel.ListarDocumentosPorCategoriaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaResponse> ListarDocumentosPorCategoriaAsync(int idCategoria) {
+            proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaRequestBody();
+            inValue.Body.idCategoria = idCategoria;
+            return ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).ListarDocumentosPorCategoriaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorResponse proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.ListarDocumentosPorAutor(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorRequest request) {
+            return base.Channel.ListarDocumentosPorAutor(request);
+        }
+        
+        public proyectoFrontend_V3.ServicioUsuarios.Documento[] ListarDocumentosPorAutor(int idAutor) {
+            proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorRequestBody();
+            inValue.Body.idAutor = idAutor;
+            proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorResponse retVal = ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).ListarDocumentosPorAutor(inValue);
+            return retVal.Body.ListarDocumentosPorAutorResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorResponse> proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.ListarDocumentosPorAutorAsync(proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorRequest request) {
+            return base.Channel.ListarDocumentosPorAutorAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorResponse> ListarDocumentosPorAutorAsync(int idAutor) {
+            proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorRequestBody();
+            inValue.Body.idAutor = idAutor;
+            return ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).ListarDocumentosPorAutorAsync(inValue);
         }
     }
 }

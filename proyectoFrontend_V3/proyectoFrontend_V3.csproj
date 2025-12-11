@@ -158,6 +158,27 @@
     <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.ObtenerCategoriasResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.ActualizarDocumentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.CrearDocumentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.Documento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorAutorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosPorCategoriaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioUsuarios\proyectoFrontend_V3.ServicioUsuarios.ObtenerDocumentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServicioUsuarios\WS_Users.disco" />
     <None Include="Connected Services\ServicioUsuarios\configuration91.svcinfo" />
     <None Include="Connected Services\ServicioUsuarios\configuration.svcinfo" />
@@ -194,6 +215,8 @@
     <Content Include="G_User.aspx" />
     <Content Include="Home_Management.aspx" />
     <Content Include="Home_User.aspx" />
+    <Content Include="js\Documentos.js" />
+    <Content Include="js\Upload.js" />
     <Content Include="Login.aspx" />
     <Content Include="Perfil_Doc.aspx" />
     <Content Include="Perfil_User.aspx" />

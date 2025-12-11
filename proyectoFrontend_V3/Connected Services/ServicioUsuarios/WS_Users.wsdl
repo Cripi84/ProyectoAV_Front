@@ -276,6 +276,119 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ListarDocumentos">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarDocumentosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarDocumentosResult" type="tns:ArrayOfDocumento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDocumento">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Documento" nillable="true" type="tns:Documento" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Documento">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Documento" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Titulo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Foto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Categoria" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreCategoria" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RutaFisica" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaPublicacion" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_UsuarioSubida" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreUsuario" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaSubida" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ObtenerDocumento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idDocumento" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerDocumentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerDocumentoResult" type="tns:Documento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearDocumento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="doc" type="tns:Documento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearDocumentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CrearDocumentoResult" type="tns:Documento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarDocumento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="doc" type="tns:Documento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarDocumentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarDocumentoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarDocumento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idDocumento" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarDocumentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EliminarDocumentoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarDocumentosPorCategoria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idCategoria" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarDocumentosPorCategoriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarDocumentosPorCategoriaResult" type="tns:ArrayOfDocumento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarDocumentosPorAutor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idAutor" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarDocumentosPorAutorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarDocumentosPorAutorResult" type="tns:ArrayOfDocumento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="RegistrarPublicoSoapIn">
@@ -362,6 +475,48 @@
   <wsdl:message name="EliminarAutorSoapOut">
     <wsdl:part name="parameters" element="tns:EliminarAutorResponse" />
   </wsdl:message>
+  <wsdl:message name="ListarDocumentosSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarDocumentos" />
+  </wsdl:message>
+  <wsdl:message name="ListarDocumentosSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarDocumentosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerDocumentoSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerDocumento" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerDocumentoSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerDocumentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="CrearDocumentoSoapIn">
+    <wsdl:part name="parameters" element="tns:CrearDocumento" />
+  </wsdl:message>
+  <wsdl:message name="CrearDocumentoSoapOut">
+    <wsdl:part name="parameters" element="tns:CrearDocumentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarDocumentoSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarDocumento" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarDocumentoSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarDocumentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarDocumentoSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarDocumento" />
+  </wsdl:message>
+  <wsdl:message name="EliminarDocumentoSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarDocumentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarDocumentosPorCategoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarDocumentosPorCategoria" />
+  </wsdl:message>
+  <wsdl:message name="ListarDocumentosPorCategoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarDocumentosPorCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarDocumentosPorAutorSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarDocumentosPorAutor" />
+  </wsdl:message>
+  <wsdl:message name="ListarDocumentosPorAutorSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarDocumentosPorAutorResponse" />
+  </wsdl:message>
   <wsdl:portType name="WS_UsersSoap">
     <wsdl:operation name="RegistrarPublico">
       <wsdl:input message="tns:RegistrarPublicoSoapIn" />
@@ -418,6 +573,34 @@
     <wsdl:operation name="EliminarAutor">
       <wsdl:input message="tns:EliminarAutorSoapIn" />
       <wsdl:output message="tns:EliminarAutorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarDocumentos">
+      <wsdl:input message="tns:ListarDocumentosSoapIn" />
+      <wsdl:output message="tns:ListarDocumentosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDocumento">
+      <wsdl:input message="tns:ObtenerDocumentoSoapIn" />
+      <wsdl:output message="tns:ObtenerDocumentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearDocumento">
+      <wsdl:input message="tns:CrearDocumentoSoapIn" />
+      <wsdl:output message="tns:CrearDocumentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarDocumento">
+      <wsdl:input message="tns:ActualizarDocumentoSoapIn" />
+      <wsdl:output message="tns:ActualizarDocumentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarDocumento">
+      <wsdl:input message="tns:EliminarDocumentoSoapIn" />
+      <wsdl:output message="tns:EliminarDocumentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarDocumentosPorCategoria">
+      <wsdl:input message="tns:ListarDocumentosPorCategoriaSoapIn" />
+      <wsdl:output message="tns:ListarDocumentosPorCategoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarDocumentosPorAutor">
+      <wsdl:input message="tns:ListarDocumentosPorAutorSoapIn" />
+      <wsdl:output message="tns:ListarDocumentosPorAutorSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WS_UsersSoap" type="tns:WS_UsersSoap">
@@ -548,6 +731,69 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ListarDocumentos">
+      <soap:operation soapAction="http://tempuri.org/ListarDocumentos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDocumento">
+      <soap:operation soapAction="http://tempuri.org/ObtenerDocumento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearDocumento">
+      <soap:operation soapAction="http://tempuri.org/CrearDocumento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarDocumento">
+      <soap:operation soapAction="http://tempuri.org/ActualizarDocumento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarDocumento">
+      <soap:operation soapAction="http://tempuri.org/EliminarDocumento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarDocumentosPorCategoria">
+      <soap:operation soapAction="http://tempuri.org/ListarDocumentosPorCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarDocumentosPorAutor">
+      <soap:operation soapAction="http://tempuri.org/ListarDocumentosPorAutor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WS_UsersSoap12" type="tns:WS_UsersSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -670,6 +916,69 @@
     </wsdl:operation>
     <wsdl:operation name="EliminarAutor">
       <soap12:operation soapAction="http://tempuri.org/EliminarAutor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarDocumentos">
+      <soap12:operation soapAction="http://tempuri.org/ListarDocumentos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDocumento">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerDocumento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearDocumento">
+      <soap12:operation soapAction="http://tempuri.org/CrearDocumento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarDocumento">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarDocumento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarDocumento">
+      <soap12:operation soapAction="http://tempuri.org/EliminarDocumento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarDocumentosPorCategoria">
+      <soap12:operation soapAction="http://tempuri.org/ListarDocumentosPorCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarDocumentosPorAutor">
+      <soap12:operation soapAction="http://tempuri.org/ListarDocumentosPorAutor" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

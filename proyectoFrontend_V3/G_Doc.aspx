@@ -1,12 +1,13 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="G_Doc.aspx.cs" Inherits="proyectoFrontend_V3.G_Doc" %>
 
-<!DOCTYPE html>
+
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestionar Documentos</title>
     <link rel="stylesheet" href="\Estilos\Styles.css">
+    <script src="js/Documentos.js"></script>
 </head>
 <body>
     <div class="topbar">
@@ -20,7 +21,7 @@
                 <button class="dropdown-item" onclick="window.location.href='Perfil.aspx'">
                     Mi Perfil
                 </button>
-                <button class="dropdown-item dropdown-logout" onclick="window.location.href='LogIn.aspx'">
+                <button class="dropdown-item dropdown-logout" onclick="window.location.href='Logout.aspx'">
                     Cerrar Sesión
                 </button>
             </div>
@@ -39,15 +40,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Un Cuento</td>
-                    <td>Autobiografía</td>
-                    <td>Chelato</td>
-                    <td>
-                        <button class="btn-edit">Editar</button>
-                        <button class="btn-delete">Eliminar</button>
-                    </td>
-                </tr>
+                <!-- Se llena dinámicamente con JavaScript -->
             </tbody>
         </table>
     </div>
