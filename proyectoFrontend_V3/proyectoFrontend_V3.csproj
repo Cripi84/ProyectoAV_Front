@@ -215,6 +215,7 @@
     <Content Include="G_User.aspx" />
     <Content Include="Home_Management.aspx" />
     <Content Include="Home_User.aspx" />
+    <Content Include="js\Cookies.js" />
     <Content Include="js\Documentos.js" />
     <Content Include="js\Upload.js" />
     <Content Include="Login.aspx" />
@@ -251,6 +252,9 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Connected Services\ServicioUsuarios\WS_Users.wsdl" />
+    <Content Include="DeleteHandler.ashx" />
+    <Content Include="DownloadHandler.ashx" />
+    <Content Include="ListHandler.ashx" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -291,6 +295,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteHandler.ashx.cs">
+      <DependentUpon>DeleteHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DownloadHandler.ashx.cs">
+      <DependentUpon>DownloadHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Form_Autor.aspx.cs">
       <DependentUpon>Form_Autor.aspx</DependentUpon>
@@ -358,6 +368,9 @@
     <Compile Include="Home_User.aspx.designer.cs">
       <DependentUpon>Home_User.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ListHandler.ashx.cs">
+      <DependentUpon>ListHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -408,6 +421,9 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="UploadHandler.ashx.cs">
+      <DependentUpon>UploadHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -419,11 +435,13 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Categorias\" />
+    <Folder Include="Fotos\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
+    <Content Include="UploadHandler.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

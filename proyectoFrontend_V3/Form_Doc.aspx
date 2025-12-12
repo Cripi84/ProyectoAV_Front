@@ -36,7 +36,7 @@
                     <input type="file" id="archivoDocumento" class="login-input"
                            accept=".pdf,.doc,.docx,.epub" />
                     
-                    <!-- Cambiar a button type="button" para usar JavaScript -->
+                    
                     <button type="button" class="btn-login" onclick="guardarDocumento()">
                         Guardar Documento
                     </button>

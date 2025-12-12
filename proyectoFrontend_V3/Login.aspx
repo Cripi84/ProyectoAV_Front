@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="\Estilos\Styles.css">
+    <script src="js/Cookies.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
