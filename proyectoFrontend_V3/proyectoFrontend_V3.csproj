@@ -378,6 +378,7 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Model\DocumentoDTO.cs" />
     <Compile Include="Perfil_Doc.aspx.cs">
       <DependentUpon>Perfil_Doc.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -434,7 +435,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Categorias\" />
+    <Folder Include="Categorias\Accion\" />
     <Folder Include="Fotos\" />
   </ItemGroup>
   <ItemGroup>

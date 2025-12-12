@@ -37,7 +37,7 @@
                            accept=".pdf,.doc,.docx,.epub" />
                     
                     
-                    <button type="button" class="btn-login" onclick="guardarDocumento()">
+                    <button type="button" class="btn-login" onclick="subirDocumento()">
                         Guardar Documento
                     </button>
                     

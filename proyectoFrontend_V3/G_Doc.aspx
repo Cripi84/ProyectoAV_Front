@@ -1,12 +1,12 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="G_Doc.aspx.cs" Inherits="proyectoFrontend_V3.G_Doc" %>
-
-
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestionar Documentos</title>
     <link rel="stylesheet" href="\Estilos\Styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/Documentos.js"></script>
 </head>
 <body>
@@ -29,6 +29,17 @@
         <h1 class="topbar-title">Gestionar Documentos</h1>
     </div>
     
+    <!-- Filtros (Opcional) -->
+    <div class="filter-section" style="padding: 20px; background: white; margin: 20px;">
+        <label for="filtroCategoria">Filtrar por Categoría:</label>
+        <select id="filtroCategoria" onchange="filtrarPorCategoria()">
+            <option value="">Todas las categorías</option>
+            <option value="1">Categoría 1</option>
+            <option value="2">Categoría 2</option>
+            <option value="3">Categoría 3</option>
+        </select>
+    </div>
+    
     <div class="main-content">
         <table class="table-docs">
             <thead>
@@ -40,7 +51,9 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Se llena dinámicamente con JavaScript -->
+                <tr>
+                    <td colspan="4" style="text-align: center;">Cargando documentos...</td>
+                </tr>
             </tbody>
         </table>
     </div>

@@ -1,56 +1,37 @@
-﻿using System;
+﻿using proyectoFrontend_V3.Model;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
 
-
 namespace ProyectoAV_Back
 {
-    /// <summary>
-    /// Summary description for Handler4
-    /// </summary>
     public class ListHandler : IHttpHandler
     {
-
         public void ProcessRequest(HttpContext context)
         {
+            context.Response.ContentType = "application/json";
+
             try
             {
-                // Obtener parámetro opcional de categoría
-                string idCategoriaParam = context.Request.QueryString["categoria"];
+                List<DocumentoDTO> documentos = new List<DocumentoDTO>();
 
-                List<Documento> documentos = new List<Documento>();
                 string connectionString = ConfigurationManager.ConnectionStrings["CnxProyecto"].ConnectionString;
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd;
-
-                    // Si se especifica categoría
-                    if (!string.IsNullOrEmpty(idCategoriaParam))
-                    {
-                        cmd = new SqlCommand("sp_Documentos_ListarPorCategoria", conn);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@ID_Categoria", Convert.ToInt32(idCategoriaParam));
-                    }
-                    else
-                    {
-                        // Listar todos
-                        cmd = new SqlCommand("sp_Documentos_Listar", conn);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                    }
+                    SqlCommand cmd = new SqlCommand("sp_Documentos_Listar", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     conn.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        documentos.Add(new Documento
+                        DocumentoDTO doc = new DocumentoDTO
                         {
                             ID_Documento = reader.GetInt32(0),
                             Titulo = reader.GetString(1),
@@ -62,25 +43,30 @@ namespace ProyectoAV_Back
                             ID_UsuarioSubida = reader.GetInt32(7),
                             NombreUsuario = reader.GetString(8),
                             FechaSubida = reader.GetDateTime(9)
-                        });
+                        };
+
+                        documentos.Add(doc);
                     }
                 }
 
-                // Retornar JSON
-                context.Response.ContentType = "application/json";
-                context.Response.Write(new JavaScriptSerializer().Serialize(documentos));
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                string json = serializer.Serialize(documentos);
+                context.Response.Write(json);
+            }
+            catch (SqlException sqlEx)
+            {
+                context.Response.StatusCode = 500;
+                context.Response.Write("{\"error\": \"Error de base de datos: " +
+                    sqlEx.Message.Replace("\"", "'") + "\"}");
             }
             catch (Exception ex)
             {
                 context.Response.StatusCode = 500;
-                context.Response.ContentType = "application/json";
-                context.Response.Write("{\"error\": \"" + ex.Message + "\"}");
+                context.Response.Write("{\"error\": \"Error general: " +
+                    ex.Message.Replace("\"", "'") + "\"}");
             }
         }
 
-        public bool IsReusable
-        {
-            get { return false; }
-        }
+        public bool IsReusable => false;
     }
 }

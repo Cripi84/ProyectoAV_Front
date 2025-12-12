@@ -28,7 +28,23 @@ namespace ProyectoAV_Back
                 return;
             }
 
-            int idDocumento = Convert.ToInt32(idDocParam);
+            int idDocumento;
+            if (!int.TryParse(idDocParam, out idDocumento))
+            {
+                context.Response.StatusCode = 400;
+                context.Response.ContentType = "application/json";
+                context.Response.Write("{\"error\": \"ID de documento inválido\"}");
+                return;
+            }
+
+            // Verificar que el usuario esté autenticado
+            if (context.Session["UsuarioID"] == null)
+            {
+                context.Response.StatusCode = 401;
+                context.Response.ContentType = "application/json";
+                context.Response.Write("{\"error\": \"Usuario no autenticado\"}");
+                return;
+            }
 
             try
             {
@@ -51,25 +67,48 @@ namespace ProyectoAV_Back
                         rutaFisica = reader.IsDBNull(0) ? null : reader.GetString(0);
                         foto = reader.IsDBNull(1) ? null : reader.GetString(1);
                     }
+                    else
+                    {
+                        context.Response.StatusCode = 404;
+                        context.Response.ContentType = "application/json";
+                        context.Response.Write("{\"error\": \"Documento no encontrado\"}");
+                        return;
+                    }
                 }
 
                 // Eliminar archivo físico del documento
                 if (!string.IsNullOrEmpty(rutaFisica))
                 {
-                    string filePath = context.Server.MapPath("~/Biblioteca/Categoria/" + rutaFisica);
+                    string filePath = context.Server.MapPath("~/Categoria/" + rutaFisica);
                     if (File.Exists(filePath))
                     {
-                        File.Delete(filePath);
+                        try
+                        {
+                            File.Delete(filePath);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Log pero continuar con la eliminación de la BD
+                            System.Diagnostics.Debug.WriteLine("Error al eliminar archivo: " + ex.Message);
+                        }
                     }
                 }
 
                 // Eliminar foto si existe
                 if (!string.IsNullOrEmpty(foto))
                 {
-                    string fotoPath = context.Server.MapPath("~/Fotos/Documentos/" + foto);
+                    string fotoPath = context.Server.MapPath("~/Fotos/" + foto);
                     if (File.Exists(fotoPath))
                     {
-                        File.Delete(fotoPath);
+                        try
+                        {
+                            File.Delete(fotoPath);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Log pero continuar
+                            System.Diagnostics.Debug.WriteLine("Error al eliminar foto: " + ex.Message);
+                        }
                     }
                 }
 
@@ -98,7 +137,7 @@ namespace ProyectoAV_Back
                     {
                         context.Response.StatusCode = 404;
                         context.Response.ContentType = "application/json";
-                        context.Response.Write("{\"error\": \"Documento no encontrado\"}");
+                        context.Response.Write("{\"error\": \"Documento no encontrado o ya fue eliminado\"}");
                     }
                 }
             }
@@ -106,7 +145,7 @@ namespace ProyectoAV_Back
             {
                 context.Response.StatusCode = 500;
                 context.Response.ContentType = "application/json";
-                context.Response.Write("{\"error\": \"" + ex.Message + "\"}");
+                context.Response.Write("{\"error\": \"" + ex.Message.Replace("\"", "'") + "\"}");
             }
         }
 
