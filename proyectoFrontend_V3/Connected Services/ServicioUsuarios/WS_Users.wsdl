@@ -104,6 +104,48 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
         </s:sequence>
       </s:complexType>
+      <s:element name="EditarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EditarUsuarioResult" type="tns:Resp_Users" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID_Usuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EliminarUsuarioResult" type="tns:Resp_Users" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReactivarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID_Usuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReactivarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReactivarUsuarioResult" type="tns:Resp_Users" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="CrearCategoria">
         <s:complexType>
           <s:sequence>
@@ -415,6 +457,24 @@
   <wsdl:message name="ObtenerUsuariosSoapOut">
     <wsdl:part name="parameters" element="tns:ObtenerUsuariosResponse" />
   </wsdl:message>
+  <wsdl:message name="EditarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:EditarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="EditarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:EditarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="EliminarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReactivarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ReactivarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ReactivarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ReactivarUsuarioResponse" />
+  </wsdl:message>
   <wsdl:message name="CrearCategoriaSoapIn">
     <wsdl:part name="parameters" element="tns:CrearCategoria" />
   </wsdl:message>
@@ -534,6 +594,18 @@
       <wsdl:input message="tns:ObtenerUsuariosSoapIn" />
       <wsdl:output message="tns:ObtenerUsuariosSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="EditarUsuario">
+      <wsdl:input message="tns:EditarUsuarioSoapIn" />
+      <wsdl:output message="tns:EditarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUsuario">
+      <wsdl:input message="tns:EliminarUsuarioSoapIn" />
+      <wsdl:output message="tns:EliminarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReactivarUsuario">
+      <wsdl:input message="tns:ReactivarUsuarioSoapIn" />
+      <wsdl:output message="tns:ReactivarUsuarioSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="CrearCategoria">
       <wsdl:input message="tns:CrearCategoriaSoapIn" />
       <wsdl:output message="tns:CrearCategoriaSoapOut" />
@@ -634,6 +706,33 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerUsuarios">
       <soap:operation soapAction="http://tempuri.org/ObtenerUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditarUsuario">
+      <soap:operation soapAction="http://tempuri.org/EditarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUsuario">
+      <soap:operation soapAction="http://tempuri.org/EliminarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReactivarUsuario">
+      <soap:operation soapAction="http://tempuri.org/ReactivarUsuario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -826,6 +925,33 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerUsuarios">
       <soap12:operation soapAction="http://tempuri.org/ObtenerUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/EditarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/EliminarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReactivarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ReactivarUsuario" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

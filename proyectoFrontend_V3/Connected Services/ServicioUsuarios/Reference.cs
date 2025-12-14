@@ -1086,6 +1086,27 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerUsuarios", ReplyAction="*")]
         System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ObtenerUsuariosResponse> ObtenerUsuariosAsync(proyectoFrontend_V3.ServicioUsuarios.ObtenerUsuariosRequest request);
         
+        // CODEGEN: Generating message contract since element name usuario from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EditarUsuario", ReplyAction="*")]
+        proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioResponse EditarUsuario(proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EditarUsuario", ReplyAction="*")]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioResponse> EditarUsuarioAsync(proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioRequest request);
+        
+        // CODEGEN: Generating message contract since element name EliminarUsuarioResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EliminarUsuario", ReplyAction="*")]
+        proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioResponse EliminarUsuario(proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EliminarUsuario", ReplyAction="*")]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioResponse> EliminarUsuarioAsync(proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioRequest request);
+        
+        // CODEGEN: Generating message contract since element name ReactivarUsuarioResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ReactivarUsuario", ReplyAction="*")]
+        proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioResponse ReactivarUsuario(proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ReactivarUsuario", ReplyAction="*")]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioResponse> ReactivarUsuarioAsync(proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioRequest request);
+        
         // CODEGEN: Generating message contract since element name categoria from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CrearCategoria", ReplyAction="*")]
         proyectoFrontend_V3.ServicioUsuarios.CrearCategoriaResponse CrearCategoria(proyectoFrontend_V3.ServicioUsuarios.CrearCategoriaRequest request);
@@ -1471,6 +1492,210 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
         
         public ObtenerUsuariosResponseBody(proyectoFrontend_V3.ServicioUsuarios.Resp_Users ObtenerUsuariosResult) {
             this.ObtenerUsuariosResult = ObtenerUsuariosResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class EditarUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="EditarUsuario", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioRequestBody Body;
+        
+        public EditarUsuarioRequest() {
+        }
+        
+        public EditarUsuarioRequest(proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class EditarUsuarioRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.User usuario;
+        
+        public EditarUsuarioRequestBody() {
+        }
+        
+        public EditarUsuarioRequestBody(proyectoFrontend_V3.ServicioUsuarios.User usuario) {
+            this.usuario = usuario;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class EditarUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="EditarUsuarioResponse", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioResponseBody Body;
+        
+        public EditarUsuarioResponse() {
+        }
+        
+        public EditarUsuarioResponse(proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class EditarUsuarioResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.Resp_Users EditarUsuarioResult;
+        
+        public EditarUsuarioResponseBody() {
+        }
+        
+        public EditarUsuarioResponseBody(proyectoFrontend_V3.ServicioUsuarios.Resp_Users EditarUsuarioResult) {
+            this.EditarUsuarioResult = EditarUsuarioResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class EliminarUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="EliminarUsuario", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioRequestBody Body;
+        
+        public EliminarUsuarioRequest() {
+        }
+        
+        public EliminarUsuarioRequest(proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class EliminarUsuarioRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int ID_Usuario;
+        
+        public EliminarUsuarioRequestBody() {
+        }
+        
+        public EliminarUsuarioRequestBody(int ID_Usuario) {
+            this.ID_Usuario = ID_Usuario;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class EliminarUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="EliminarUsuarioResponse", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioResponseBody Body;
+        
+        public EliminarUsuarioResponse() {
+        }
+        
+        public EliminarUsuarioResponse(proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class EliminarUsuarioResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.Resp_Users EliminarUsuarioResult;
+        
+        public EliminarUsuarioResponseBody() {
+        }
+        
+        public EliminarUsuarioResponseBody(proyectoFrontend_V3.ServicioUsuarios.Resp_Users EliminarUsuarioResult) {
+            this.EliminarUsuarioResult = EliminarUsuarioResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ReactivarUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ReactivarUsuario", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioRequestBody Body;
+        
+        public ReactivarUsuarioRequest() {
+        }
+        
+        public ReactivarUsuarioRequest(proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ReactivarUsuarioRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int ID_Usuario;
+        
+        public ReactivarUsuarioRequestBody() {
+        }
+        
+        public ReactivarUsuarioRequestBody(int ID_Usuario) {
+            this.ID_Usuario = ID_Usuario;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ReactivarUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ReactivarUsuarioResponse", Namespace="http://tempuri.org/", Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioResponseBody Body;
+        
+        public ReactivarUsuarioResponse() {
+        }
+        
+        public ReactivarUsuarioResponse(proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ReactivarUsuarioResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public proyectoFrontend_V3.ServicioUsuarios.Resp_Users ReactivarUsuarioResult;
+        
+        public ReactivarUsuarioResponseBody() {
+        }
+        
+        public ReactivarUsuarioResponseBody(proyectoFrontend_V3.ServicioUsuarios.Resp_Users ReactivarUsuarioResult) {
+            this.ReactivarUsuarioResult = ReactivarUsuarioResult;
         }
     }
     
@@ -2666,6 +2891,81 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
             proyectoFrontend_V3.ServicioUsuarios.ObtenerUsuariosRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.ObtenerUsuariosRequest();
             inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.ObtenerUsuariosRequestBody();
             return ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).ObtenerUsuariosAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioResponse proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.EditarUsuario(proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioRequest request) {
+            return base.Channel.EditarUsuario(request);
+        }
+        
+        public proyectoFrontend_V3.ServicioUsuarios.Resp_Users EditarUsuario(proyectoFrontend_V3.ServicioUsuarios.User usuario) {
+            proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioRequestBody();
+            inValue.Body.usuario = usuario;
+            proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioResponse retVal = ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).EditarUsuario(inValue);
+            return retVal.Body.EditarUsuarioResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioResponse> proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.EditarUsuarioAsync(proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioRequest request) {
+            return base.Channel.EditarUsuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioResponse> EditarUsuarioAsync(proyectoFrontend_V3.ServicioUsuarios.User usuario) {
+            proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.EditarUsuarioRequestBody();
+            inValue.Body.usuario = usuario;
+            return ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).EditarUsuarioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioResponse proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.EliminarUsuario(proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioRequest request) {
+            return base.Channel.EliminarUsuario(request);
+        }
+        
+        public proyectoFrontend_V3.ServicioUsuarios.Resp_Users EliminarUsuario(int ID_Usuario) {
+            proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioRequestBody();
+            inValue.Body.ID_Usuario = ID_Usuario;
+            proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioResponse retVal = ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).EliminarUsuario(inValue);
+            return retVal.Body.EliminarUsuarioResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioResponse> proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.EliminarUsuarioAsync(proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioRequest request) {
+            return base.Channel.EliminarUsuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioResponse> EliminarUsuarioAsync(int ID_Usuario) {
+            proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.EliminarUsuarioRequestBody();
+            inValue.Body.ID_Usuario = ID_Usuario;
+            return ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).EliminarUsuarioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioResponse proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.ReactivarUsuario(proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioRequest request) {
+            return base.Channel.ReactivarUsuario(request);
+        }
+        
+        public proyectoFrontend_V3.ServicioUsuarios.Resp_Users ReactivarUsuario(int ID_Usuario) {
+            proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioRequestBody();
+            inValue.Body.ID_Usuario = ID_Usuario;
+            proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioResponse retVal = ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).ReactivarUsuario(inValue);
+            return retVal.Body.ReactivarUsuarioResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioResponse> proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap.ReactivarUsuarioAsync(proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioRequest request) {
+            return base.Channel.ReactivarUsuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioResponse> ReactivarUsuarioAsync(int ID_Usuario) {
+            proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioRequest();
+            inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.ReactivarUsuarioRequestBody();
+            inValue.Body.ID_Usuario = ID_Usuario;
+            return ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).ReactivarUsuarioAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

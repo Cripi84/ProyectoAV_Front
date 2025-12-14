@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador</title>
     <link rel="stylesheet" href="\Estilos\Styles.css">
+     <script src="js/Cookies.js"></script>
+
 </head>
 <body>
     <div class="topbar">
@@ -20,7 +22,7 @@
                 <button class="dropdown-item" onclick="window.location.href='Perfil.aspx'">
                     Mi Perfil
                 </button>
-                <button class="dropdown-item dropdown-logout" onclick="window.location.href='LogIn.aspx'">
+               <button class="dropdown-item dropdown-logout" onclick="cerrarSesion()">
                     Cerrar Sesión
                 </button>
             </div>

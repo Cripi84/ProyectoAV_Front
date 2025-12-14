@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestionar Categorías</title>
     <link rel="stylesheet" href="\Estilos\Styles.css">
+    <script src="js/Cookies.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -25,9 +26,9 @@
                     <button type="button" class="dropdown-item" onclick="window.location.href='Perfil.aspx'">
                         Mi Perfil
                     </button>
-                    <button type="button" class="dropdown-item dropdown-logout" onclick="window.location.href='CerrarSesion.aspx'">
-                        Cerrar Sesión
-                    </button>
+                    <button class="dropdown-item dropdown-logout" onclick="cerrarSesion()">
+                    Cerrar Sesión
+                </button>
                 </div>
             </div>
             <h1 class="topbar-title">Categorías</h1>

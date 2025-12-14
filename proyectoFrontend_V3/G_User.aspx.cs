@@ -1,9 +1,5 @@
 ﻿using proyectoFrontend_V3.ServicioUsuarios;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace proyectoFrontend_V3
@@ -14,12 +10,19 @@ namespace proyectoFrontend_V3
         {
             if (!IsPostBack)
             {
-                // Mostrar datos del usuario logueado en el dropdown
-                //lblUsuarioNombre.Text = UsuarioNombre + " " + Session["UsuarioApellido"];
-                //lblUsuarioEmail.Text = Session["UsuarioEmail"]?.ToString();
-
-                // Cargar la lista de usuarios
                 CargarUsuarios();
+
+                // Mostrar mensaje si viene de Form_Usuarios
+                if (Request.QueryString["msg"] != null)
+                {
+                    string mensaje = Request.QueryString["msg"];
+                    if (mensaje == "editado")
+                    {
+                        lblMensaje.Text = "Usuario actualizado correctamente";
+                        lblMensaje.CssClass = "mensaje-exito";
+                        lblMensaje.Visible = true;
+                    }
+                }
             }
         }
 
@@ -32,25 +35,97 @@ namespace proyectoFrontend_V3
 
                 if (respuesta.CodigoError == 1 && respuesta.Usuarios != null && respuesta.Usuarios.Length > 0)
                 {
-                    // Enlazar los datos al Repeater
                     rptUsuarios.DataSource = respuesta.Usuarios;
                     rptUsuarios.DataBind();
-
-                    lblMensaje.Visible = false;
                 }
                 else
                 {
-                    // No hay usuarios o hubo un error
                     rptUsuarios.DataSource = null;
                     rptUsuarios.DataBind();
-
                     lblMensaje.Text = respuesta.Mensaje ?? "No hay usuarios registrados";
+                    lblMensaje.CssClass = "mensaje-info";
                     lblMensaje.Visible = true;
                 }
             }
             catch (Exception ex)
             {
                 lblMensaje.Text = "Error al cargar usuarios: " + ex.Message;
+                lblMensaje.CssClass = "mensaje-error";
+                lblMensaje.Visible = true;
+            }
+        }
+
+        protected void btnCambiarEstado_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            string[] args = btn.CommandArgument.Split(',');
+            int idUsuario = Convert.ToInt32(args[0]);
+            int estadoActual = Convert.ToInt32(args[1]);
+
+            if (estadoActual == 1)
+            {
+                DesactivarUsuario(idUsuario);
+            }
+            else
+            {
+                ReactivarUsuario(idUsuario);
+            }
+        }
+
+        private void DesactivarUsuario(int idUsuario)
+        {
+            try
+            {
+                var cliente = new WS_UsersSoapClient();
+                var respuesta = cliente.EliminarUsuario(idUsuario);
+
+                if (respuesta.CodigoError == 1)
+                {
+                    lblMensaje.Text = respuesta.Mensaje;
+                    lblMensaje.CssClass = "mensaje-exito";
+                    lblMensaje.Visible = true;
+                    CargarUsuarios();
+                }
+                else
+                {
+                    lblMensaje.Text = respuesta.Mensaje ?? "No se pudo desactivar el usuario";
+                    lblMensaje.CssClass = "mensaje-error";
+                    lblMensaje.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                lblMensaje.Text = "Error al desactivar usuario: " + ex.Message;
+                lblMensaje.CssClass = "mensaje-error";
+                lblMensaje.Visible = true;
+            }
+        }
+
+        private void ReactivarUsuario(int idUsuario)
+        {
+            try
+            {
+                var cliente = new WS_UsersSoapClient();
+                var respuesta = cliente.ReactivarUsuario(idUsuario);
+
+                if (respuesta.CodigoError == 1)
+                {
+                    lblMensaje.Text = respuesta.Mensaje;
+                    lblMensaje.CssClass = "mensaje-exito";
+                    lblMensaje.Visible = true;
+                    CargarUsuarios();
+                }
+                else
+                {
+                    lblMensaje.Text = respuesta.Mensaje ?? "No se pudo reactivar el usuario";
+                    lblMensaje.CssClass = "mensaje-error";
+                    lblMensaje.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                lblMensaje.Text = "Error al reactivar usuario: " + ex.Message;
+                lblMensaje.CssClass = "mensaje-error";
                 lblMensaje.Visible = true;
             }
         }

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestionar Usuarios</title>
     <link rel="stylesheet" href="\Estilos\Styles.css">
+    <script src="js/Cookies.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -25,7 +26,7 @@
                     <button type="button" class="dropdown-item" onclick="window.location.href='Perfil.aspx'">
                         Mi Perfil
                     </button>
-                    <button type="button" class="dropdown-item dropdown-logout" onclick="window.location.href='CerrarSesion.aspx'">
+                    <button class="dropdown-item dropdown-logout" onclick="cerrarSesion()">
                         Cerrar Sesión
                     </button>
                 </div>
@@ -34,6 +35,9 @@
         </div>
         
         <div class="main-content">
+            <!-- Mensaje de feedback -->
+            <asp:Label ID="lblMensaje" runat="server" CssClass="mensaje-info" Visible="false"></asp:Label>
+            
             <table class="table-users">
                 <thead>
                     <tr>
@@ -57,16 +61,20 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn-edit" onclick="editarUsuario(<%# Eval("ID_Usuario") %>)">Editar</button>
-                                    <button type="button" class="btn-delete" onclick="desactivarUsuario(<%# Eval("ID_Usuario") %>)">
-                                        <%# Convert.ToInt32(Eval("ID_Estado")) == 1 ? "Desactivar" : "Activar" %>
+                                    <button type="button" class="btn-edit" 
+                                            onclick="window.location.href='Form_Usuer.aspx?id=<%# Eval("ID_Usuario") %>'">
+                                        Editar
                                     </button>
+                                    <asp:Button ID="btnCambiarEstado" runat="server" 
+                                        CssClass='<%# Convert.ToInt32(Eval("ID_Estado")) == 1 ? "btn-delete" : "btn-activate" %>'
+                                        Text='<%# Convert.ToInt32(Eval("ID_Estado")) == 1 ? "Desactivar" : "Activar" %>'
+                                        CommandArgument='<%# Eval("ID_Usuario") + "," + Eval("ID_Estado") %>'
+                                        OnClick="btnCambiarEstado_Click"
+                                        OnClientClick="return confirm('¿Está seguro de cambiar el estado de este usuario?');" />
                                 </td>
                             </tr>
                         </ItemTemplate>
                     </asp:Repeater>
-                    
-                    <asp:Label ID="lblMensaje" runat="server" CssClass="mensaje-vacio" Visible="false"></asp:Label>
                 </tbody>
             </table>
         </div>
@@ -89,14 +97,6 @@
                     }
                 }
             }
-        }
-
-        function editarUsuario(id) {
-            alert('Editar usuario ID: ' + id + ' - Próximamente');
-        }
-
-        function desactivarUsuario(id) {
-            alert('Cambiar estado usuario ID: ' + id + ' - Próximamente');
         }
     </script>
 </body>

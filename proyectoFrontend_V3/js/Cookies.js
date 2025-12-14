@@ -25,6 +25,17 @@ function eraseCookie(name) {
     )}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax`;
 }
 
+function cerrarSesion() {
+    // Borrar todas las cookies que uses en tu aplicación
+    eraseCookie('recordarUsuario');
+    eraseCookie('recordarPassword');
+
+    // Redirigir al login
+    window.location.href = 'Login.aspx';
+}
+
+
+
 // ===================== Autorrelleno desde cookies =====================
 function cargarCredencialesGuardadas() {
     const usuarioGuardado = getCookie("recordarUsuario");

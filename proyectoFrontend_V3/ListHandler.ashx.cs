@@ -17,6 +17,15 @@ namespace ProyectoAV_Back
 
             try
             {
+                // Obtener filtro de categoría si existe
+                string idCategoriaParam = context.Request.QueryString["NombreCategoria"];
+                int? idCategoria = null;
+
+                if (!string.IsNullOrEmpty(idCategoriaParam) && int.TryParse(idCategoriaParam, out int catId))
+                {
+                    idCategoria = catId;
+                }
+
                 List<DocumentoDTO> documentos = new List<DocumentoDTO>();
 
                 string connectionString = ConfigurationManager.ConnectionStrings["CnxProyecto"].ConnectionString;

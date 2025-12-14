@@ -17,8 +17,8 @@ $(function () {
     // ===================== CARGAR DOCUMENTOS =====================
     function loadDocumentos(idCategoria) {
         const url = idCategoria
-            ? 'G_Doc.aspx/ListHandler?categoria=' + idCategoria
-            : 'G_Doc.aspx/ListHandler.ashx';
+            ? '/ListHandler?categoria=' + idCategoria
+            : '/ListHandler.ashx';
 
         $.ajax({
             url: url,
@@ -108,14 +108,15 @@ $(function () {
 
     // ===================== SUBIR DOCUMENTO (Para Form_Doc.aspx) =====================
     window.subirDocumento = function () {
-        const titulo = $('#titulo').val().trim();
-        const idCategoria = $('#idCategoria').val();
-        const nombreCategoria = $('#nombreCategoria').val().trim();
-        const archivoDoc = $('#archivoDoc')[0].files[0];
-        const archivoFoto = $('#archivoFoto')[0].files[0];
 
-        if (!titulo || !idCategoria || !nombreCategoria || !archivoDoc) {
-            showAlert('Por favor complete todos los campos requeridos');
+        const titulo = $('#titulo').val().trim();
+        const idCategoria = $('#ddlCategoria').val(); // Cambiado a ddlCategoria
+        const nombreCategoria = $("#ddlCategoria option:selected").text().trim(); // Cambiado a ddlCategoria
+        const archivoDoc = $('#archivoDocumento')[0].files[0];
+        const archivoFoto = $('#fotoDocumento')[0].files[0];
+
+        if (!titulo || !idCategoria || !archivoDoc) {
+            alert('Por favor complete todos los campos requeridos');
             return;
         }
 
@@ -130,23 +131,18 @@ $(function () {
         }
 
         $.ajax({
-            url: 'G_Doc.aspx/UploadHandler',
+            url: 'UploadHandler.ashx',
             method: 'POST',
             data: formData,
             processData: false,
             contentType: false,
             success: function (res) {
-                showAlert(res.mensaje || 'Documento subido exitosamente');
-                $('#titulo').val('');
-                $('#archivoDoc').val('');
-                $('#archivoFoto').val('');
+                alert(res.mensaje || 'Documento subido exitosamente');
                 window.location.href = 'G_Doc.aspx';
             },
             error: function (xhr) {
-                const msg = xhr.responseJSON && xhr.responseJSON.error
-                    ? xhr.responseJSON.error
-                    : 'Error al subir documento';
-                showAlert("Error: " + msg);
+                const msg = xhr.responseJSON?.error || 'Error al subir documento';
+                alert("Error: " + msg);
             }
         });
     };
@@ -159,4 +155,82 @@ $(function () {
 
     // ===================== CARGAR AL INICIO =====================
     loadDocumentos();
+
+    // *** IMPORTANTE: Cargar categorías y autores si estamos en Form_Doc.aspx ***
+    if ($('#categoria').length > 0) {
+        cargarCategorias();
+    }
+    if ($('#autor').length > 0) {
+        cargarAutores();
+    }
 });
+
+function cargarCategorias() {
+    console.log("Cargando categorías..."); // Para debug
+
+    $.ajax({
+        url: "/WS_Users.asmx/ObtenerCategorias",
+        method: "POST",
+        data: "{}",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (resp) {
+            console.log("Respuesta categorías:", resp); // Para debug
+
+            const categorias = resp.d.Categorias;
+            const $sel = $("#categoria");
+
+            $sel.empty();
+            $sel.append('<option value="">Seleccione una categoría</option>');
+
+            categorias.forEach(c => {
+                $sel.append(`
+                    <option value="${c.ID_Categoria}">
+                        ${c.NombreCategoria}
+                    </option>
+                `);
+            });
+
+            console.log("Categorías cargadas:", categorias.length);
+        },
+        error: function (xhr) {
+            console.error("Error cargando categorías", xhr.responseText);
+            alert("Error al cargar categorías");
+        }
+    });
+}
+
+function cargarAutores() {
+    console.log("Cargando autores..."); // Para debug
+
+    $.ajax({
+        url: "/WS_Users.asmx/ObtenerAutores",
+        method: "POST",
+        data: "{}",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (resp) {
+            console.log("Respuesta autores:", resp); // Para debug
+
+            const autores = resp.d.Autores;
+            const $sel = $("#autor");
+
+            $sel.empty();
+            $sel.append('<option value="">Seleccione un autor</option>');
+
+            autores.forEach(a => {
+                $sel.append(`
+                    <option value="${a.ID_Autor}">
+                        ${a.NombreAutor} ${a.ApellidoAutor}
+                    </option>
+                `);
+            });
+
+            console.log("Autores cargados:", autores.length);
+        },
+        error: function (xhr) {
+            console.error("Error cargando autores", xhr.responseText);
+            alert("Error al cargar autores");
+        }
+    });
+}

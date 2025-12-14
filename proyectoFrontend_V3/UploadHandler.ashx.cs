@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using proyectoFrontend_V3.ServicioUsuarios;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,159 +10,211 @@ using System.Web.SessionState;
 
 namespace ProyectoAV_Back
 {
-    /// <summary>
-    /// Summary description for Handler2
-    /// </summary>
     public class UploadHandler : IHttpHandler, IRequiresSessionState
     {
+        private readonly string[] _allowedDocExt = { ".pdf", ".docx", ".doc", ".txt" };
+        private readonly string[] _allowedImgExt = { ".jpg", ".jpeg", ".png", ".gif", ".bmp" };
+
+        private const long MAX_DOC_BYTES = 10 * 1024 * 1024;
+        private const long MAX_IMG_BYTES = 5 * 1024 * 1024;
+        private const string CNX = "CnxProyecto";
+
         public void ProcessRequest(HttpContext context)
         {
-            // Verificar que haya archivos
-            if (context.Request.Files.Count == 0)
-            {
-                context.Response.StatusCode = 400;
-                context.Response.ContentType = "application/json";
-                context.Response.Write("{\"error\": \"No se seleccionó ningún archivo\"}");
-                return;
-            }
-
             try
             {
-                // Obtener datos del formulario
-                string titulo = context.Request.Form["titulo"];
-                string idCategoriaStr = context.Request.Form["idCategoria"];
-                string nombreCategoria = context.Request.Form["nombreCategoria"];
+                context.Response.StatusCode = 200;
+                context.Response.ContentType = "application/json";
+                context.Response.Write("peticion" + context.Request.ToString());
+                // Validar sesión
+                if (context.Session?["UsuarioID"] == null)
+                {
+                    ResponderError(context, 401, "Usuario no autenticado.");
+                    context.Response.ContentType = "application/json";
+                    context.Response.Write("{\"success\":false, \"error\":\"Usuario no autenticado.\"}");
+                    return;
+                }
 
-                // Validaciones básicas
-                if (string.IsNullOrWhiteSpace(titulo))
+                // En lugar de buscar por nombre
+                HttpPostedFile archivoDoc = context.Request.Files.Count > 0 ? context.Request.Files[0] : null;
+                HttpPostedFile archivoFoto = context.Request.Files.Count > 1 ? context.Request.Files[1] : null;
+
+                if (context.Request.Files.Count == 0)
                 {
                     context.Response.StatusCode = 400;
                     context.Response.ContentType = "application/json";
-                    context.Response.Write("{\"error\": \"El título es requerido\"}");
+                    context.Response.Write("{\"success\":false, \"error\":\"No se seleccionó ningún archivo.\"}");
                     return;
                 }
+                
 
-                if (string.IsNullOrWhiteSpace(idCategoriaStr))
-                {
-                    context.Response.StatusCode = 400;
-                    context.Response.ContentType = "application/json";
-                    context.Response.Write("{\"error\": \"La categoría es requerida\"}");
-                    return;
-                }
-
-                int idCategoria = Convert.ToInt32(idCategoriaStr);
-
-                // Obtener ID del usuario desde la sesión
-                if (context.Session["UsuarioID"] == null)
-                {
-                    context.Response.StatusCode = 401;
-                    context.Response.ContentType = "application/json";
-                    context.Response.Write("{\"error\": \"Usuario no autenticado\"}");
-                    return;
-                }
-
-               
-
-                // Archivo principal (PDF, DOCX, etc.)
-                HttpPostedFile archivoDoc = context.Request.Files["archivoDoc"];
-
+                // Validar archivo de documento
                 if (archivoDoc == null || archivoDoc.ContentLength == 0)
                 {
                     context.Response.StatusCode = 400;
                     context.Response.ContentType = "application/json";
-                    context.Response.Write("{\"error\": \"Debe seleccionar un archivo de documento\"}");
+                    context.Response.Write("{\"success\":false, \"error\":\"Debe seleccionar un archivo de documento.\"}");
                     return;
                 }
 
-                // Foto de portada (opcional)
-                HttpPostedFile archivoFoto = context.Request.Files["archivoFoto"];
-
+                // Validar archivo de foto
                 if (archivoFoto == null || archivoFoto.ContentLength == 0)
                 {
                     context.Response.StatusCode = 400;
                     context.Response.ContentType = "application/json";
-                    context.Response.Write("{\"error\": \"Debe seleccionar una foto\"}");
+                    context.Response.Write("{\"success\":false, \"error\":\"La imagen de portada es obligatoria.\"}");
                     return;
                 }
-                    
 
-                // Crear carpeta de categoría si no existe
-                string carpetaCategoria = context.Server.MapPath("~/Categorias/" + nombreCategoria);
-                if (!Directory.Exists(carpetaCategoria))
+                // Validar tamaño del documento
+                if (archivoDoc.ContentLength > MAX_DOC_BYTES)
                 {
-                    Directory.CreateDirectory(carpetaCategoria);
+                    context.Response.StatusCode = 400;
+                    context.Response.ContentType = "application/json";
+                    context.Response.Write("{\"success\":false, \"error\":\"Archivo de documento excede el tamaño máximo de 10 MB.\"}");
+                    return;
                 }
 
-                // Generar nombre único para el documento
-                string extension = Path.GetExtension(archivoDoc.FileName);
-                string nombreDocUnico = "doc_" + DateTime.Now.Ticks + extension;
-                string rutaDoc = Path.Combine(carpetaCategoria, nombreDocUnico);
-
-                // Guardar documento principal
-                archivoDoc.SaveAs(rutaDoc);
-
-                // Guardar foto si existe
-                string nombreFoto = null;
-                if (archivoFoto != null && archivoFoto.ContentLength > 0)
+                // Validar tamaño de la imagen
+                if (archivoFoto.ContentLength > MAX_IMG_BYTES)
                 {
-                    string carpetaFotos = context.Server.MapPath("~/Fotos/");
-                    if (!Directory.Exists(carpetaFotos))
-                    {
-                        Directory.CreateDirectory(carpetaFotos);
-                    }
-
-                    string extensionFoto = Path.GetExtension(archivoFoto.FileName);
-                    nombreFoto = "portada_" + DateTime.Now.Ticks + extensionFoto;
-                    string rutaFoto = Path.Combine(carpetaFotos, nombreFoto);
-                    archivoFoto.SaveAs(rutaFoto);
+                    context.Response.StatusCode = 400;
+                    context.Response.ContentType = "application/json";
+                    context.Response.Write("{\"success\":false, \"error\":\"Imagen de portada excede el tamaño máximo de 5 MB.\"}");
+                    return;
                 }
 
-                // Ruta relativa para guardar en BD
-                string rutaRelativa = nombreCategoria + "/" + nombreDocUnico;
+                // Validar extensiones
+                string extensionDoc = Path.GetExtension(archivoDoc.FileName).ToLowerInvariant();
+                string extensionFoto = Path.GetExtension(archivoFoto.FileName).ToLowerInvariant();
 
-                // Insertar en la base de datos
+                if (!_allowedDocExt.Contains(extensionDoc))
+                {
+                    context.Response.StatusCode = 400;
+                    context.Response.ContentType = "application/json";
+                    context.Response.Write("{\"success\":false, \"error\":\"Formato del documento no válido. Permitidos: PDF, DOCX, DOC, TXT.\"}");
+                    return;
+                }
+
+                if (!_allowedImgExt.Contains(extensionFoto))
+                {
+                    context.Response.StatusCode = 400;
+                    context.Response.ContentType = "application/json";
+                    context.Response.Write("{\"success\":false, \"error\":\"Formato de imagen no válido. Permitidos: JPG, PNG, GIF, BMP.\"}");
+                    return;
+                }
+
+                string titulo = context.Request.Form["titulo"];
+                string idCategoriaStr = context.Request.Form["ddlCategoria"];
+                string idAutorStr = context.Request.Form["ddlAutor"];
+                string sinopsis = context.Request.Form["sinopsis"];
+                string fechaStr = context.Request.Form["fechaPublicacion"];
+
+                if (string.IsNullOrWhiteSpace(titulo) ||
+                    string.IsNullOrWhiteSpace(idCategoriaStr) ||
+                    string.IsNullOrWhiteSpace(idAutorStr) ||
+                    string.IsNullOrWhiteSpace(sinopsis))
+                {
+                    ResponderError(context, 400, "Todos los campos son obligatorios.");
+                    return;
+                }
+
+                if (!int.TryParse(idCategoriaStr, out int idCategoria))
+                {
+                    ResponderError(context, 400, "Categoría inválida.");
+                    return;
+                }
+
+                if (!DateTime.TryParse(fechaStr, out DateTime fechaPublicacion) || fechaPublicacion > DateTime.Now)
+                {
+                    ResponderError(context, 400, "Fecha de publicación inválida.");
+                    return;
+                }
+
+                string nombreCategoria = ObtenerNombreCategoria(idCategoria);
+                if (string.IsNullOrEmpty(nombreCategoria))
+                {
+                    ResponderError(context, 400, "No se pudo obtener la categoría.");
+                    return;
+                }
+
+                // Carpetas
+                string carpetaCategoria = context.Server.MapPath($"~/Categorias/{nombreCategoria}");
+                Directory.CreateDirectory(carpetaCategoria);
+
+                string carpetaFotos = context.Server.MapPath("~/Fotos/");
+                Directory.CreateDirectory(carpetaFotos);
+
+                // Nombres únicos (SIN SHA)
+                string nombreDocUnico = $"{Guid.NewGuid()}{extensionDoc}";
+                string nombreFotoUnico = $"{Guid.NewGuid()}{extensionFoto}";
+
+                archivoDoc.SaveAs(Path.Combine(carpetaCategoria, nombreDocUnico));
+                archivoFoto.SaveAs(Path.Combine(carpetaFotos, nombreFotoUnico));
+
+                string rutaRelativa = $"{nombreCategoria}/{nombreDocUnico}";
                 int idUsuario = Convert.ToInt32(context.Session["UsuarioID"]);
-                string connectionString = ConfigurationManager.ConnectionStrings["CnxProyecto"].ConnectionString;
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                using (SqlCommand cmd = new SqlCommand("sp_Documentos_Insertar", conn))
+
+                using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings[CNX].ConnectionString))
+                using (SqlCommand cmd = new SqlCommand("sp_Documentos_Insertar", cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-
                     cmd.Parameters.AddWithValue("@Titulo", titulo);
-                    cmd.Parameters.AddWithValue("@Foto", (object)nombreFoto ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Foto", nombreFotoUnico);
                     cmd.Parameters.AddWithValue("@ID_Categoria", idCategoria);
+                    cmd.Parameters.AddWithValue("@Sinopsis", sinopsis);
                     cmd.Parameters.AddWithValue("@RutaFisica", rutaRelativa);
+                    cmd.Parameters.AddWithValue("@FechaPublicacion", fechaPublicacion);
                     cmd.Parameters.AddWithValue("@ID_UsuarioSubida", idUsuario);
+                    cmd.Parameters.AddWithValue("@Autores", idAutorStr);
 
-                    // Parámetro de salida para el ID generado
-                    SqlParameter outputId = new SqlParameter("@ID_Documento", SqlDbType.Int)
+                    cn.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
                     {
-                        Direction = ParameterDirection.Output
-                    };
-                    cmd.Parameters.Add(outputId);
-
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-
-                    int idDocumentoGenerado = Convert.ToInt32(outputId.Value);
-
-                    // Respuesta exitosa
-                    context.Response.ContentType = "application/json";
-                    context.Response.Write("{\"mensaje\": \"Documento subido exitosamente\", \"idDocumento\": " + idDocumentoGenerado + ", \"rutaFisica\": \"" + rutaRelativa + "\", \"foto\": \"" + nombreFoto + "\"}");
+                        if (dr.Read() && Convert.ToInt32(dr["Exito"]) == 1)
+                        {
+                            context.Response.ContentType = "application/json";
+                            context.Response.Write("{\"success\":true,\"mensaje\":\"Documento guardado correctamente\"}");
+                        }
+                        else
+                        {
+                            ResponderError(context, 500, dr["Mensaje"].ToString());
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
-                context.Response.StatusCode = 500;
-                context.Response.ContentType = "application/json";
-                context.Response.Write("{\"error\": \"" + ex.Message.Replace("\"", "'") + "\"}");
+                ResponderError(context, 500, ex.Message);
             }
         }
 
-
-        public bool IsReusable
+        private void ResponderError(HttpContext ctx, int code, string msg)
         {
-            get { return false; }
+            ctx.Response.StatusCode = code;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.Write("{\"success\":false,\"error\":\"" +
+                HttpUtility.JavaScriptStringEncode(msg) + "\"}");
         }
+
+        private string ObtenerNombreCategoria(int idCategoria)
+        {
+            try
+            {
+                var ws = new WS_UsersSoapClient();
+                var r = ws.ObtenerCategoriaPorID(idCategoria);
+
+                if (r.CodigoError == 1 && r.Categorias?.Length > 0)
+                    return r.Categorias[0].NombreCategoria;
+
+                return string.Empty;
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
+
+        public bool IsReusable => false;
     }
 }
