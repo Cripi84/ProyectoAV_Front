@@ -14,17 +14,44 @@ $(function () {
         alert(msg);
     }
 
-    // ===================== CARGAR DOCUMENTOS =====================
-    function loadDocumentos(idCategoria) {
-        const url = idCategoria
-            ? '/ListHandler?categoria=' + idCategoria
-            : '/ListHandler.ashx';
+    // ===================== CARGAR CATEGORÍAS PARA FILTRO =====================
+    //function cargarCategoriasParaFiltro() {
+    //    $.ajax({
+    //        url: "/WS_Users.asmx/ObtenerCategorias",
+    //        method: "POST",
+    //        data: "{}",
+    //        contentType: "application/json; charset=utf-8",
+    //        dataType: "json",
+    //        success: function (resp) {
+    //            const categorias = resp.d.Categorias;
+    //            const $sel = $("#filtroCategoria");
 
+    //            $sel.empty();
+    //            $sel.append('<option value="">Todas las categorías</option>');
+
+    //            categorias.forEach(c => {
+    //                $sel.append(`
+    //                    <option value="${c.ID_Categoria}">
+    //                        ${escapeHtml(c.NombreCategoria)}
+    //                    </option>
+    //                `);
+    //            });
+    //        },
+    //        error: function (xhr) {
+    //            console.error("Error cargando categorías para filtro", xhr.responseText);
+    //        }
+    //    });
+    //}
+
+    // ===================== CARGAR DOCUMENTOS =====================
+    function loadDocumentos() {
+        const url = 'G_Doc/ListHandler.ashx';
         $.ajax({
             url: url,
             method: 'GET',
             dataType: 'json',
             success: function (documentos) {
+                console.log("Respuesta del servidor:", documentos);
                 renderTable(documentos);
             },
             error: function (xhr, status, err) {
@@ -51,11 +78,8 @@ $(function () {
 
             const actions = $(`
                 <td>
-                    <button class="btn-download" data-id="${doc.ID_Documento}" data-titulo="${escapeHtml(doc.Titulo)}">
-                        Descargar
-                    </button>
                     <button class="btn-edit" data-id="${doc.ID_Documento}">
-                        Editar
+                        Modificar
                     </button>
                     <button class="btn-delete" data-id="${doc.ID_Documento}">
                         Eliminar
@@ -66,12 +90,6 @@ $(function () {
             $tbl.append(tr);
         });
     }
-
-    // ===================== DESCARGAR DOCUMENTO =====================
-    $tbl.on('click', '.btn-download', function () {
-        const id = $(this).data('id');
-        window.open('DownloadHandler.ashx?id=' + id, '_blank');
-    });
 
     // ===================== EDITAR DOCUMENTO =====================
     $tbl.on('click', '.btn-edit', function () {
@@ -85,17 +103,16 @@ $(function () {
         if (!confirm('¿Eliminar este documento? Esta acción no se puede deshacer.')) return;
 
         $.ajax({
-            url: 'G_Doc.aspx/DeleteHandler?id=' + id,
+            url: 'DeleteHandler.ashx?id=' + id,
             method: 'GET',
             dataType: 'json',
             success: function (res) {
                 if (res && res.mensaje) {
                     showAlert(res.mensaje);
-                    loadDocumentos();
                 } else {
                     showAlert("Documento eliminado");
-                    loadDocumentos();
                 }
+                loadDocumentos();
             },
             error: function (xhr) {
                 const msg = xhr.responseJSON && xhr.responseJSON.error
@@ -106,47 +123,6 @@ $(function () {
         });
     });
 
-    // ===================== SUBIR DOCUMENTO (Para Form_Doc.aspx) =====================
-    window.subirDocumento = function () {
-
-        const titulo = $('#titulo').val().trim();
-        const idCategoria = $('#ddlCategoria').val(); // Cambiado a ddlCategoria
-        const nombreCategoria = $("#ddlCategoria option:selected").text().trim(); // Cambiado a ddlCategoria
-        const archivoDoc = $('#archivoDocumento')[0].files[0];
-        const archivoFoto = $('#fotoDocumento')[0].files[0];
-
-        if (!titulo || !idCategoria || !archivoDoc) {
-            alert('Por favor complete todos los campos requeridos');
-            return;
-        }
-
-        const formData = new FormData();
-        formData.append('titulo', titulo);
-        formData.append('idCategoria', idCategoria);
-        formData.append('nombreCategoria', nombreCategoria);
-        formData.append('archivoDoc', archivoDoc);
-
-        if (archivoFoto) {
-            formData.append('archivoFoto', archivoFoto);
-        }
-
-        $.ajax({
-            url: 'UploadHandler.ashx',
-            method: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (res) {
-                alert(res.mensaje || 'Documento subido exitosamente');
-                window.location.href = 'G_Doc.aspx';
-            },
-            error: function (xhr) {
-                const msg = xhr.responseJSON?.error || 'Error al subir documento';
-                alert("Error: " + msg);
-            }
-        });
-    };
-
     // ===================== FILTRAR POR CATEGORÍA =====================
     window.filtrarPorCategoria = function () {
         const idCategoria = $('#filtroCategoria').val();
@@ -154,6 +130,7 @@ $(function () {
     };
 
     // ===================== CARGAR AL INICIO =====================
+    //cargarCategoriasParaFiltro();
     loadDocumentos();
 
     // *** IMPORTANTE: Cargar categorías y autores si estamos en Form_Doc.aspx ***
@@ -165,8 +142,9 @@ $(function () {
     }
 });
 
+// ===================== FUNCIONES PARA Form_Doc.aspx =====================
 function cargarCategorias() {
-    console.log("Cargando categorías..."); // Para debug
+    console.log("Cargando categorías para formulario...");
 
     $.ajax({
         url: "/WS_Users.asmx/ObtenerCategorias",
@@ -175,7 +153,7 @@ function cargarCategorias() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (resp) {
-            console.log("Respuesta categorías:", resp); // Para debug
+            console.log("Respuesta categorías:", resp);
 
             const categorias = resp.d.Categorias;
             const $sel = $("#categoria");
@@ -201,7 +179,7 @@ function cargarCategorias() {
 }
 
 function cargarAutores() {
-    console.log("Cargando autores..."); // Para debug
+    console.log("Cargando autores para formulario...");
 
     $.ajax({
         url: "/WS_Users.asmx/ObtenerAutores",
@@ -210,7 +188,7 @@ function cargarAutores() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (resp) {
-            console.log("Respuesta autores:", resp); // Para debug
+            console.log("Respuesta autores:", resp);
 
             const autores = resp.d.Autores;
             const $sel = $("#autor");

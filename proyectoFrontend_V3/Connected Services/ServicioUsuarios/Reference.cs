@@ -887,6 +887,9 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FotoField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AutorField;
+        
         private int ID_CategoriaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -953,7 +956,20 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Autor {
+            get {
+                return this.AutorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AutorField, value) != true)) {
+                    this.AutorField = value;
+                    this.RaisePropertyChanged("Autor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
         public int ID_Categoria {
             get {
                 return this.ID_CategoriaField;
@@ -966,7 +982,7 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
         public string NombreCategoria {
             get {
                 return this.NombreCategoriaField;
@@ -979,7 +995,7 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
         public string RutaFisica {
             get {
                 return this.RutaFisicaField;
@@ -992,7 +1008,7 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
         public System.Nullable<System.DateTime> FechaPublicacion {
             get {
                 return this.FechaPublicacionField;
@@ -1005,7 +1021,7 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
         public int ID_UsuarioSubida {
             get {
                 return this.ID_UsuarioSubidaField;
@@ -1018,7 +1034,7 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=9)]
         public string NombreUsuario {
             get {
                 return this.NombreUsuarioField;
@@ -1031,7 +1047,7 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=10)]
         public System.DateTime FechaSubida {
             get {
                 return this.FechaSubidaField;
@@ -2416,12 +2432,12 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
     public partial class ListarDocumentosResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public proyectoFrontend_V3.ServicioUsuarios.Documento[] ListarDocumentosResult;
+        public string ListarDocumentosResult;
         
         public ListarDocumentosResponseBody() {
         }
         
-        public ListarDocumentosResponseBody(proyectoFrontend_V3.ServicioUsuarios.Documento[] ListarDocumentosResult) {
+        public ListarDocumentosResponseBody(string ListarDocumentosResult) {
             this.ListarDocumentosResult = ListarDocumentosResult;
         }
     }
@@ -3219,7 +3235,7 @@ namespace proyectoFrontend_V3.ServicioUsuarios {
             return base.Channel.ListarDocumentos(request);
         }
         
-        public proyectoFrontend_V3.ServicioUsuarios.Documento[] ListarDocumentos() {
+        public string ListarDocumentos() {
             proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosRequest inValue = new proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosRequest();
             inValue.Body = new proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosRequestBody();
             proyectoFrontend_V3.ServicioUsuarios.ListarDocumentosResponse retVal = ((proyectoFrontend_V3.ServicioUsuarios.WS_UsersSoap)(this)).ListarDocumentos(inValue);

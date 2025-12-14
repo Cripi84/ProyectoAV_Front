@@ -1,9 +1,11 @@
-﻿using proyectoFrontend_V3.Model;
+﻿
+using proyectoFrontend_V3.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Web;
 using System.Web.Script.Serialization;
 
@@ -17,8 +19,9 @@ namespace ProyectoAV_Back
 
             try
             {
+                Debug.WriteLine("LISTA:VACIA");
                 // Obtener filtro de categoría si existe
-                string idCategoriaParam = context.Request.QueryString["NombreCategoria"];
+                string idCategoriaParam = context.Request.QueryString["categoria"];
                 int? idCategoria = null;
 
                 if (!string.IsNullOrEmpty(idCategoriaParam) && int.TryParse(idCategoriaParam, out int catId))
@@ -32,6 +35,7 @@ namespace ProyectoAV_Back
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
+                    Debug.WriteLine("LISTA:VACIA");
                     SqlCommand cmd = new SqlCommand("sp_Documentos_Listar", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -57,9 +61,11 @@ namespace ProyectoAV_Back
                         documentos.Add(doc);
                     }
                 }
+                Debug.WriteLine("LISTA CON ELEMENTOS:"+documentos.ToString());
 
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
                 string json = serializer.Serialize(documentos);
+
                 context.Response.Write(json);
             }
             catch (SqlException sqlEx)

@@ -13,6 +13,8 @@ namespace proyectoFrontend_V3.Model
         public int ID_Categoria { get; set; }
         public string NombreCategoria { get; set; }
         public string RutaFisica { get; set; }
+
+        public string Autor { get; set; }
         public DateTime? FechaPublicacion { get; set; }
         public int ID_UsuarioSubida { get; set; }
         public string NombreUsuario { get; set; }
