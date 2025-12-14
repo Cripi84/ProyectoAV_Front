@@ -3,6 +3,7 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -23,9 +24,10 @@ namespace ProyectoAV_Back
         {
             try
             {
-                context.Response.StatusCode = 200;
-                context.Response.ContentType = "application/json";
-                context.Response.Write("peticion" + context.Request.ToString());
+             
+
+
+
                 // Validar sesión
                 if (context.Session?["UsuarioID"] == null)
                 {
@@ -35,18 +37,21 @@ namespace ProyectoAV_Back
                     return;
                 }
 
-                // En lugar de buscar por nombre
-                HttpPostedFile archivoDoc = context.Request.Files.Count > 0 ? context.Request.Files[0] : null;
-                HttpPostedFile archivoFoto = context.Request.Files.Count > 1 ? context.Request.Files[1] : null;
-
-                if (context.Request.Files.Count == 0)
+               
+                if (context.Request.Files.Count != 2)
                 {
                     context.Response.StatusCode = 400;
                     context.Response.ContentType = "application/json";
-                    context.Response.Write("{\"success\":false, \"error\":\"No se seleccionó ningún archivo.\"}");
+                    context.Response.Write(
+                        "{\"success\":false, \"error\":\"Se requieren exactamente 2 archivos.\"}"
+                    );
                     return;
                 }
-                
+
+
+                // En lugar de buscar por nombre
+                HttpPostedFile archivoDoc = context.Request.Files.Count > 0 ? context.Request.Files[0] : null;
+                HttpPostedFile archivoFoto = context.Request.Files.Count > 1 ? context.Request.Files[1] : null;
 
                 // Validar archivo de documento
                 if (archivoDoc == null || archivoDoc.ContentLength == 0)
@@ -145,7 +150,7 @@ namespace ProyectoAV_Back
                 string carpetaFotos = context.Server.MapPath("~/Fotos/");
                 Directory.CreateDirectory(carpetaFotos);
 
-                // Nombres únicos (SIN SHA)
+                // Nombres únicos 
                 string nombreDocUnico = $"{Guid.NewGuid()}{extensionDoc}";
                 string nombreFotoUnico = $"{Guid.NewGuid()}{extensionFoto}";
 

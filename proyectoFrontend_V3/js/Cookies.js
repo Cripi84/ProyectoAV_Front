@@ -26,14 +26,10 @@ function eraseCookie(name) {
 }
 
 function cerrarSesion() {
-    // Borrar todas las cookies que uses en tu aplicación
     eraseCookie('recordarUsuario');
     eraseCookie('recordarPassword');
-
-    // Redirigir al login
     window.location.href = 'Login.aspx';
 }
-
 
 
 // ===================== Autorrelleno desde cookies =====================
